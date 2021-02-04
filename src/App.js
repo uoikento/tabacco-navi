@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import TextField from '@material-ui/core/TextField'
+import './index.css'
+import Shop from './services/shops'
 
-function App() {
+const App = () => {
+  const [shops, setShops] = useState([])
+  console.log(shops)
+  useEffect(() => {
+    console.log('effect')
+    Shop.getAll()
+      .then(firstShops => {
+        setShops(firstShops)
+      })
+  }, [])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>hello</p>
+      <ul>
+        {shops.map(a => a.name)}
+      </ul>
+      <TextField >
+        Hello World
+      </TextField>
     </div>
-  );
+  )
 }
 
 export default App;
+
