@@ -1,18 +1,25 @@
 import axios from "axios"
 const baseUrl = 'http://localhost:3001'
 
-const getAll = () => {
-  const getRequest = axios.get(baseUrl)
-  return getRequest.then(response => {
-    // const responseData = response.data
-    // console.log(responseData)
-    console.log(response.data["results"]["shop"])
-    return response.data["results"]["shop"]
-  })
+const getShops = (keyword) => {
+  const getRequest = axios.post(baseUrl, keyword )
+  return (
+    getRequest.then(response => {
+      const data = response.data
+      console.log(data)
+      if (data.length === 0) {
+        return console.log("kara")
+      } else {
+        console.log(data)
+        return data
+      }
+    })
+  )
 }
 
-// const getFind = () => {
-//   const 
+// const create = searchObject => {
+//   const request = axios.post(baseUrl, searchObject)
+//   return request.then(response => response.data)
 // }
 
-export default { getAll }
+export default { getShops }
