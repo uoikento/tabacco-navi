@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
 import './index.css'
 import Shop from './services/shops'
+import Show from './components/Show';
 
 const App = () => {
   const [shops, setShops] = useState([])
@@ -27,7 +27,7 @@ const App = () => {
         } else {
           setShops(smoke)
         }
-        console.log(smoke)
+        // console.log(smoke)
       })
       .then(setSearchKeyword(''))
   }
@@ -50,24 +50,20 @@ const App = () => {
     setSearchLat('')
     setSearchLng('')
   }
-  // const smokeShops = () => {
-  //   shops.filter(shop => shop.non_smoking === '全面禁煙')
-  //     .then(smokes => {
-  //     setShowShop(smokes)
-  //   })
-  // } 
-  // const shopsToShow = showShops
   
+  // const showbody = () => {
+    
+  // }
+
   return (
     <div>
       <p>hello</p>
-        {(() => {
-          if (shops !== null) {
-            return <ul>{shops.map(s => s.name)}</ul>
-          } else {
-            return <p>該当するお店を見つけることが出来ませんでした。。。</p>
-          }
-      })()}
+      {shops !== null
+        ? (shops.length == 0
+          ? <p>やにやに</p>
+          :<Show shops={shops} />)
+        : <p>該当するお店を見つけることが出来ませんでした。。。</p>
+      }
         <form onSubmit={postWord}>
           <input
             value={searchKeyword}
