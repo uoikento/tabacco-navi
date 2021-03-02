@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+a#urlButton {
+  color: #61dafb;
+}
+a:-webkit-any-link {
+  color: beige;
+}

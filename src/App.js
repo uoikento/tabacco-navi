@@ -5,6 +5,7 @@ import Genre from './services/genres'
 import Header from './components/Header'
 import Show from './components/Show'
 import Select from 'react-select'
+import { Box, Button } from '@material-ui/core'
 
 const App = () => {
   const [shops, setShops] = useState([])
@@ -67,10 +68,10 @@ const App = () => {
     setVisible(!visible)
   }
   const hideVisible = { display: visible ? 'none': '' }
-  const showVisible = {display: visible ? '': 'none'}
-
+  const showVisible = { display: visible ? '' : 'none' }
+  
   return (
-    <div>
+    <Box >
       <Header />
       <form onSubmit={postWord}>
         <input
@@ -108,7 +109,7 @@ const App = () => {
           : <p>該当するお店を見つけることが出来ませんでした。。。</p>
         }
       </div>
-    </div>
+    </Box>
   )
 }
 
