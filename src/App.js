@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Shop from './services/shops'
 import Genre from './services/genres'
 import Header from './components/Header'
+import SearchForm from './components/SearchForm'
 import Show from './components/Show'
 import Location from './components/Location'
 import Select from 'react-select'
@@ -10,8 +11,8 @@ import { Box } from '@material-ui/core'
 
 const App = () => {
   const [shops, setShops] = useState([])
-  const [genres, setGenres] = useState([])
   const [searchKeyword, setSearchKeyword] = useState('')
+  const [genres, setGenres] = useState([])
   const [searchLat, setSearchLat] = useState('')
   const [searchLng, setSearchLng] = useState('')
   const [searchGenre, setSearchGenre] = useState('')
@@ -47,22 +48,15 @@ const App = () => {
       })
       // .then(setSearchKeyword(''))
   }
-  const handleSearchKeywordChange = (e) => {
-    setSearchKeyword(e.target.value)
-  }
 
   return (
     <Box >
       <Header />
       <form onSubmit={postWord}>
-        <input
-          value={searchKeyword}
-        onChange={handleSearchKeywordChange}
-        placeholder="キーワード"
-        />
+        <SearchForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword}/>
         <button type="submit">
           keyword:（{searchKeyword}）
-          {/* genre: （{searchGenre.label}） */}
+          genre: （{searchGenre.label}）
           location:{searchLat== ''
             ? "地名"
             : "現在地"
