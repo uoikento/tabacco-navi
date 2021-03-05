@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import './index.css'
+// import './index.css'
 import Shop from './services/shops'
 import Genre from './services/genres'
 import Header from './components/Header'
 import Show from './components/Show'
+import Location from './components/Location'
 import Select from 'react-select'
-import { Box, Button } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 
 const App = () => {
   const [shops, setShops] = useState([])
@@ -14,7 +15,6 @@ const App = () => {
   const [searchLat, setSearchLat] = useState('')
   const [searchLng, setSearchLng] = useState('')
   const [searchGenre, setSearchGenre] = useState('')
-  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     Genre
@@ -51,25 +51,6 @@ const App = () => {
     setSearchKeyword(e.target.value)
   }
 
-  const handleSearchLocation = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
-        const lat = position.coords.latitude
-        const lng = position.coords.longitude
-        setSearchLat(lat)
-        setSearchLng(lng)
-        setVisible(!visible)
-      })
-  }
-  const handleDeleteLocation = () => {
-    setSearchLat('')
-    setSearchLng('')
-    setVisible(!visible)
-  }
-  const hideVisible = { display: visible ? 'none': '' }
-  const showVisible = { display: visible ? '' : 'none' }
-  
   return (
     <Box >
       <Header />
@@ -90,16 +71,7 @@ const App = () => {
           検索
         </button>
       </form>
-      <div style={hideVisible}>
-        <button id='getLocation' onClick={handleSearchLocation}>
-          位置情報取得
-        </button>
-      </div>
-      <div style={showVisible}>
-        <button onClick={handleDeleteLocation}>
-          位置情報削除
-        </button>
-      </div>
+      <Location setSearchLat={ setSearchLat } setSearchLng={setSearchLng}/>
       <Select options={genres} defaultValue={searchGenre} onChange={setSearchGenre} isClearable={true}/>
       <div>
         {shops !== null
