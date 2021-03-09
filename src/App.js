@@ -6,8 +6,27 @@ import Header from './components/Header'
 import SearchForm from './components/SearchForm'
 import Show from './components/Show'
 import Location from './components/Location'
-import Select from 'react-select'
+import SubmitButton from './components/Button'
+import SelectForm from './components/Select'
 import { Box } from '@material-ui/core'
+
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    display: 'block',
+    marginTop: theme.spacing(2),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
 
 const App = () => {
   const [shops, setShops] = useState([])
@@ -53,20 +72,11 @@ const App = () => {
     <Box >
       <Header />
       <form onSubmit={postWord}>
-        <SearchForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword}/>
-        <button type="submit">
-          keyword:（{searchKeyword}）
-          genre: （{searchGenre.label}）
-          location:{searchLat== ''
-            ? "地名"
-            : "現在地"
-          }
-          <br />
-          検索
-        </button>
+        <SearchForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />
+        <SubmitButton searchKeyword={searchKeyword} searchGenre={searchGenre} setSearchLat={searchLat}/>
       </form>
       <Location setSearchLat={ setSearchLat } setSearchLng={setSearchLng}/>
-      <Select options={genres} defaultValue={searchGenre} onChange={setSearchGenre} isClearable={true}/>
+      <SelectForm genres={genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
       <div>
         {shops !== null
           ? (shops.length == 0

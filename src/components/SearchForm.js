@@ -1,4 +1,6 @@
 import React from 'react' 
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
 
 const searchForm = (props) => {
   // form中身の変更内容を取得
@@ -7,12 +9,13 @@ const searchForm = (props) => {
   }
   return (
     <div>
-      <input
+      <TextField
         value={props.searchKeyword}
         onChange={handleSearchKeywordChange}
         placeholder="キーワード"
         />
-      </div>
+    </div>
   )
 }
+
 export default searchForm

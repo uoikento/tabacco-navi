@@ -1,6 +1,18 @@
 import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+
+const useStyles = makeStyles((theme) => ({
+  box: {
+    marginTop: '8px',
+  },
+  button: {
+    backgroundColor: '#004d40',
+  },
+})) 
 
 const Location = (props) => {
+  const classes = useStyles()
   const [visible, setVisible] = useState(false)
 
   const hideVisible = { display: visible ? 'none': '' }
@@ -24,16 +36,16 @@ const Location = (props) => {
   }
 
   return (
-    <div>
+    <div className={classes.box}>
       <div style={hideVisible}>
-        <button id='getLocation' onClick={handleSearchLocation}>
+        <Button variant='contained' color='primary' id='getLocation' className={classes.button} onClick={handleSearchLocation}>
               位置情報取得
-        </button>
+        </Button>
       </div>
       <div style={showVisible}>
-        <button onClick={handleDeleteLocation}>
+        <Button variant='contained' color='primary' id='getLocation' className={classes.button} onClick={handleDeleteLocation}>
               位置情報削除
-        </button>
+        </Button>
       </div>
     </div>
   )

@@ -29,19 +29,19 @@ const useStyles = makeStyles((theme) => ({
 const MyComponent = React.forwardRef(function MyComponent(props, ref) {
   // console.log(props)
   return <div {...props} ref={ref}></div>
-});
+})
 
 const Show = (props) => {
   const shop = props.shops
   // console.log(shop)
-  // console.log(props)
+  console.log(props.shops)
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
       <GridList cellHeight={150} className={classes.gridList} spacing={8} cols={3}>
         {shop.map((shop, index) => (
-          <GridListTile key={shop.photo.pc.m} >
+          <GridListTile key={shop.id} >
             <img srcSet={shop.photo.pc.l} alt={shop.name} />
             <Tooltip title={shop.name} placement="top-end">
               <MyComponent>
@@ -50,7 +50,7 @@ const Show = (props) => {
                   actionIcon={
                     <IconButton >
                       <Typography >
-                        <a id="urlButton" href={shop.urls.pc} target="_blank" rel="noopener noreferrer" className={classes.icon}>
+                        <a id="urlButton" href={shop.urls.pc} target="_blank" rel="noopener noreferrer" className={classes.icon} >
                           info
                         </a>
                         </Typography>
