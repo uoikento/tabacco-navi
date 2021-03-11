@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -11,8 +11,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   bar: {
-    color: "#e0f2f1",
-    backgroundColor: "#004d40"
+    color: "#000",
+    backgroundColor: "#ddd",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -27,7 +27,7 @@ const Header = () => {
   // const color = theme()
   return (
     // <ThemeProvider theme={theme}>
-      <div className={classes.root} >
+    <div className="Header" >
         <AppBar position="static" className={classes.bar}>
           <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
