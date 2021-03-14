@@ -11,8 +11,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   bar: {
+    backgroundColor: "#fff",
     color: "#000",
-    backgroundColor: "#ddd",
+    bottom: "auto",
+    top: 0,
   },
   menuButton: {
     marginRight: theme.spacing(2),

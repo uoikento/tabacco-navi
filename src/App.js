@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Form from './components/Form'
 import Show from './components/Show'
+import ScrollTop from './components/ScrollTop'
 import SearchState from './components/SearchState'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
@@ -12,6 +13,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import './App.css'
 
 const font = "'Corben', sans-serif"
@@ -36,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const [shops, setShops] = useState([])
   const [genres, setGenres] = useState([])
-  
+
   const classes = useStyles()
   
   useEffect(() => {
@@ -82,11 +84,16 @@ const App = () => {
             : <p>該当するお店を見つけることが出来ませんでした。。。</p>
           }
         </div>
-      </Container>
-        <Footer />
-        </ThemeProvider>
+        </Container>
+        {/* <ScrollTop>
+        <Fab color="primary" size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop> */}
+      <Footer />
+      </ThemeProvider>
       </Box>
   )
-}
+} 
 
 export default App;

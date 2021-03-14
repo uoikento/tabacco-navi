@@ -3,6 +3,7 @@ import KeywordForm from './KeywordForm'
 import Location from './Location'
 import SubmitButton from './Button'
 import SelectForm from './SelectForm'
+import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
@@ -28,14 +29,22 @@ const Form = (props) => {
       lng: searchLng
     })
   }
+  const deleteForm = () => {
+    setSearchKeyword('')
+    setSearchGenre('')
+    setSearchLat('')
+    setSearchLng('')
+  }
+
   return (
     <div className={classes.searchForm}>
       <form onSubmit={postWord}>
         <SelectForm genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
         <KeywordForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />
         <SubmitButton />
-        <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} />
+        <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} searchLat={searchLat}/>
       </form>
+      <Button onClick={deleteForm}>delete</Button>
     </div>
   )
 }
