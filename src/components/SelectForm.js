@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React from 'react'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
@@ -16,13 +16,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const SelectForm = (props) => {
-  // const [select, setSelect] = useState([])
   const classes = useStyles()
   const genre = props.genres
 
-  // console.log(select)
   const handleSelectChange = (e) => {
-    // setSelect(e.target.value)
     props.setSearchGenre(e.target.value)
   }
 

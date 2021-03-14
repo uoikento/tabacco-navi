@@ -28,10 +28,6 @@ const useStyles = makeStyles((theme) => ({
   bodyContainer: {
     color: "#004d40",
   },
-  searchForm: {
-    // display: "flex",
-    textAlign: "center",
-  },
   shopBox: {
     marginBottom: '8px',
   }
@@ -40,10 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const [shops, setShops] = useState([])
   const [genres, setGenres] = useState([])
-  const [searchKeyword, setSearchKeyword] = useState('')
-  const [searchLat, setSearchLat] = useState('')
-  const [searchLng, setSearchLng] = useState('')
-  const [searchGenre, setSearchGenre] = useState([])
+  
   const classes = useStyles()
   
   useEffect(() => {
@@ -54,20 +47,8 @@ const App = () => {
         // console.log(genres)
     })
   }, [])
-  const deleteForm = () => {
-    setSearchGenre('')
-    setSearchKeyword('')
-    setSearchLat('')
-    setSearchLng('')
-  }
-  const postWord = (e) => {
-    e.preventDefault()
-    const searchObject = {
-      keyword: searchKeyword,
-      genre: searchGenre.code,
-      lat: searchLat,
-      lng: searchLng
-    }
+  
+  const postWord = (searchObject) => {
     console.log(searchObject)
     Shop
       .getShops(searchObject)
@@ -91,10 +72,8 @@ const App = () => {
         <ThemeProvider theme={theme}>
       <Header />
       <Container className={classes.bodyContainer}>
-        <div className={classes.searchForm}>
           {/* <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchLng={searchLng} searchGenre={searchGenre}/> */}
-            <Form postWord={postWord} genres={genres} setSearchKeyword={setSearchKeyword} setSearchLat={setSearchLat} setSearchLng={setSearchLng} setSearchGenre={setSearchGenre} />
-        </div>
+        <Form postWord={postWord} genres={genres} />
         <div className={classes.shopBox}>
           {shops !== null
             ? (shops.length == 0
