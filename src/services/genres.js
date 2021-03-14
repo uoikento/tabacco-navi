@@ -7,9 +7,8 @@ const getGenres = () => {
   return (
     getResponse.then(res => {
       const data = res.data.genre
-      // console.log(data.map(codes => codes.code))
-      const genreCode = data.map(datas => ({value: datas.code, label: datas.name} ))
-      console.log(genreCode)
+      const genreCode = data.map(datas => ({code: datas.code, label: datas.name} ))
+      // console.log(genreCode)
       return genreCode
     })
   )
