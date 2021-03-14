@@ -78,6 +78,7 @@ const App = () => {
         }
         // console.log(smoke)
       })
+      .then()
       // .then(setSearchKeyword(''))
   }
 
@@ -95,7 +96,6 @@ const App = () => {
           </form>
           <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} />
         </div>
-
         <div className={classes.shopBox}>
           {shops !== null
             ? (shops.length == 0

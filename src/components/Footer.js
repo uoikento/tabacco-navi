@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     top: "auto",
     bottom: 0,
     color: "#e0f2f1",
-    backgroundColor: "#004d40"
+    backgroundColor: "#fff"
   },
   menuButton: {
     marginRight: theme.spacing(2),

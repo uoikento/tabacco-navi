@@ -21,10 +21,11 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
     marginTop: '8px',
+    paddingBottom: '8px',
   },
   gridList: {
     width: 1000,
-    height: 700,
+    height: 500,
   },
   icon: {
     color: '#004d40',
