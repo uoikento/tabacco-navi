@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#004d40'
   },
 }))
-const SubmitButton = (props) => {
+const SubmitButton = () => {
   const classes = useStyles()
   return (
     <div className={classes.box}>

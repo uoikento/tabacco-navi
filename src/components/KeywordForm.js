@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const SearchForm = (props) => {
+const KeywordForm = (props) => {
+  // console.log(props.searchKeyword)
   const classes = useStyles()
   // form中身の変更内容を取得
   const handleSearchKeywordChange = (e) => {
@@ -30,4 +31,4 @@ const SearchForm = (props) => {
   )
 }
 
-export default SearchForm
+export default KeywordForm

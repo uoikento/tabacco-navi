@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 const SelectForm = (props) => {
   const classes = useStyles()
   const genre = props.genres
-  // console.log(genre)
+
   const handleSelectChange = (e) => {
     props.setSearchGenre(e.target.value)
   }
@@ -32,6 +32,7 @@ const SelectForm = (props) => {
           value={props.searchGenre}
           onChange={handleSelectChange}
         >
+          <MenuItem key='delete' value={''}>-</MenuItem>
           {genre.map((genre) => (
             <MenuItem key={genre.label} value={genre} >{genre.label}</MenuItem>
           ))}
