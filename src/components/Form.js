@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import KeywordForm from './KeywordForm'
 import Location from './Location'
-import SubmitButton from './Button'
+import SubmitButton from './SubmitButton'
 import SelectForm from './SelectForm'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'

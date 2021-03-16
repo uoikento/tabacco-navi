@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Shop from './services/shops'
 import Genre from './services/genres'
 import Header from './components/Header'
@@ -10,10 +10,11 @@ import SearchState from './components/SearchState'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
+// import Fab from '@material-ui/core/Fab'
+// import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import './App.css'
 
 const font = "'Corben', sans-serif"
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const [shops, setShops] = useState([])
   const [genres, setGenres] = useState([])
-
+  const refTop = useRef()
   const classes = useStyles()
   
   useEffect(() => {
@@ -69,9 +70,18 @@ const App = () => {
       })
   }
 
+  // const scrollTop = () => {
+  //   console.log(refTop.current)
+  //   const { top } = refTop.current.getBoundingClientRect()
+  //   window.scrollTo({
+  //     top: top ,
+  //     behavior: "smooth"
+  //   })
+  // }
   return (
-    <Box className={classes.root}>
-        <ThemeProvider theme={theme}>
+    <Box className={classes.root} >
+      <ThemeProvider theme={theme}>
+        <div display={'none'} ref={refTop}/>
       <Header />
       <Container className={classes.bodyContainer}>
           {/* <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchLng={searchLng} searchGenre={searchGenre}/> */}
@@ -85,13 +95,10 @@ const App = () => {
           }
         </div>
         </Container>
-        {/* <ScrollTop>
-        <Fab color="primary" size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop> */}
       <Footer />
       </ThemeProvider>
+      <ScrollTop refTop={refTop}/>
+        {/* <Button variant='contained' color='primary' onClick={scrollTop}/> */}
       </Box>
   )
 } 
