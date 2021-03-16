@@ -4,7 +4,7 @@ import Genre from './services/genres'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Form from './components/Form'
-import Show from './components/Show'
+import ToggleShow from './components/ToggleShow'
 import ScrollTop from './components/ScrollTop'
 import SearchState from './components/SearchState'
 import Box from '@material-ui/core/Box'
@@ -90,7 +90,7 @@ const App = () => {
           {shops !== null
             ? (shops.length == 0
               ? <p>ヤニ切れ</p>
-              :<Show shops={shops} />)
+                : <ToggleShow shops={shops}/>)
             : <p>該当するお店を見つけることが出来ませんでした。。。</p>
           }
         </div>
