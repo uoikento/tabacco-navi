@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-// import Icon from './hotpepper-s.gif'
 import { makeStyles } from '@material-ui/core/styles'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
