@@ -5,35 +5,32 @@ import hotpepper from './hotpepper-s.gif'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   bar: {
     top: "auto",
     bottom: 0,
-    color: "#000",
-    backgroundColor: "#fff",
-  },
-  you: {
-    paddingRight: 4,
+    color: "#6c584c",
+    backgroundColor: "#dde5b6",
+    // margin: "0 2em",
   },
   title: {
-    flexGrow: 1,
+    textAlign: "center",
+    margin: "0 2em",
+  },
+  icon: {
+    color: '#a98467',
   },
 }))
 const Footer = () => {
   const classes = useStyles()
   return (
-    <div>
       <AppBar className={classes.bar}>
-        <div className={classes.you}>
+        <div className={classes.title}>
         <Typography >
-          yaninavi <br/>
-          Powered by <a href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a>
+          Produced by Ips.k <br/>
+          Powered by <a href="http://webservice.recruit.co.jp/" className={classes.icon}>ホットペッパー Webサービス</a>
           </Typography>
           </div>
       </AppBar>
-    </div>
   )
 }
 

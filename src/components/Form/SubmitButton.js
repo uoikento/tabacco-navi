@@ -6,7 +6,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '8px',
   },
   button: {
-    backgroundColor: '#004d40'
+    backgroundColor: '#adc178',
+    color: "#6c584c"
   },
 }))
 const SubmitButton = () => {
@@ -14,7 +15,7 @@ const SubmitButton = () => {
   return (
     <div className={classes.box}>
       <Button variant='contained' color='primary' type='submit' className={classes.button}>
-        検索
+        Search
       </Button>
     </div>
   )

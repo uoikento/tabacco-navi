@@ -11,8 +11,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   bar: {
-    backgroundColor: "#fff",
-    color: "#000",
+    backgroundColor: "#dde5b6",
+    color: "#6c584c",
     bottom: "auto",
     top: 0,
   },

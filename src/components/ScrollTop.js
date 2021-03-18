@@ -11,7 +11,7 @@ const ScrollTop = (props) => {
     bottom: 80,
     left: 'auto',
     position: 'fixed',
-    backgroudColor: '#ddd'
+    backgroundColor: '#ddd'
   }
   const handleScroll = () => {
     console.log(props.refTop.current)
@@ -23,7 +23,7 @@ const ScrollTop = (props) => {
   }
 
   return (
-    <Fab style={style} onClick={handleScroll}>
+    <Fab style={style} size="medium" onClick={handleScroll}>
       <KeyboardArrowUpIcon />
     </Fab>
   )

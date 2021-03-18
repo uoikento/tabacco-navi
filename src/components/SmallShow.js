@@ -1,18 +1,13 @@
 import React, {useState} from 'react'
-// import Icon from './hotpepper-s.gif'
+import InfoShop from './InfoShop'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from "@material-ui/core/Grid"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia"
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import Slide from '@material-ui/core/Slide'
+import IconButton from '@material-ui/core/IconButton'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
     marginTop: '8px',
     // paddingBottom: '8px',
   },
@@ -32,27 +26,32 @@ const useStyles = makeStyles((theme) => ({
     height: 80,
   },
   details: {
-    width: 'calc(100% - 120px)',
+    width: 'calc(100% - 80px)',
     flexWrap: "nowrap",
-    // textOverflow: "ellipsis",
-    overflow: "hidden"
+    overflow: "hidden",
+    display: "flex",
   },
   content: {
     textOverflow: "ellipsis",
     overflow: "hidden",
-    // whiteSpace: "nowrap"
   },
-  list: {
+  card: {
     display: "flex",
+    backgroundColor: "#fff",
+    height: 80,
+    marginTop: "0,5em",
+    borderTop: "solid 0.2em #dde5b6",
+    color: "#6c584c",
   },
   button: {
-    color: '#000',
+    color: '#ddd',
+    marginLeft: "auto",
   },
 }))
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-})
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="up" ref={ref} {...props} />;
+// })
 
 const SmallShow = (props) => {
   const classes = useStyles()
@@ -73,53 +72,24 @@ const SmallShow = (props) => {
   return (
     <div className={classes.root}>
       <Grid direction="column">
+        <Typography>Smoking shops</Typography>
       {shop.map((shop, index) => (
-        <Card key={shop.id} className={classes.list}>
+        <Card key={shop.id} className={classes.card}>
           <CardMedia className={classes.cover} image={shop.photo.pc.l} title={shop.name} />
           <div className={classes.details}>
           <CardContent className={classes.content}>
-            <Typography>
+            <Typography variant="subtitle1">
               {shop.name}
             </Typography>
-            <Button onClick={() => handleClickOpen(index)} className={classes.button}>
-              詳細
-            </Button>
             </CardContent>
+            <IconButton onClick={() => handleClickOpen(index)} className={classes.button}>
+              <InfoOutlinedIcon/>
+            </IconButton>
             </div>
         </Card>
       ))}
         </Grid>
-        <Dialog
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-slide-title"
-          aria-describedby="alert-dialog-slide-description"
-          maxWidth="xl"
-          fullwidth="true"
-          open={open}
-        >
-        <DialogTitle id="alert-dialog-slide-title">{shop[openShopIndex].name}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            住所：{shop[openShopIndex].address} &nbsp;
-            <a href={shopGoogleMapUrl} target="_blank" rel="noopener noreferrer" className={classes.icon}>→googleMap</a>
-            <br/>
-            営業時間：{shop[openShopIndex].open} <br/>
-            wifi：{shop[openShopIndex].wifi}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Disagree
-          </Button>
-          <Typography >
-            <a id="urlButton" href={shop[openShopIndex].urls.pc} target="_blank" rel="noopener noreferrer" className={classes.icon} >
-              →HotPepper
-            </a>
-          </Typography>
-        </DialogActions>
-      </Dialog>
+      <InfoShop shop={shop} open={open} openShopIndex={openShopIndex} handleClose={handleClose}/>
     </div>
   )
 }

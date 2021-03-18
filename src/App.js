@@ -26,13 +26,20 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "100vh",
+    backgroundColor: "#fff",
+    minHeight: "100vh",
   },
   bodyContainer: {
-    color: "#004d40",
+    color: "#6c584c",
+  },
+  bodyContent: {
+    textAlign: "center",
+    fontSize: "5rem",
   },
   shopBox: {
-    marginBottom: '8px',
+    paddingTop: "8px",
+    margin: "0 2em 2em",
+    backgroundColor: "#fff",
   }
 }))
 
@@ -70,36 +77,27 @@ const App = () => {
       })
   }
 
-  // const scrollTop = () => {
-  //   console.log(refTop.current)
-  //   const { top } = refTop.current.getBoundingClientRect()
-  //   window.scrollTo({
-  //     top: top ,
-  //     behavior: "smooth"
-  //   })
-  // }
   return (
-    <Box className={classes.root} >
+    <div className={classes.root} >
       <ThemeProvider theme={theme}>
         <div display={'none'} ref={refTop}/>
       <Header />
       <Container className={classes.bodyContainer}>
           {/* <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchLng={searchLng} searchGenre={searchGenre}/> */}
         <Form postWord={postWord} genres={genres} />
+        </Container>
         <div className={classes.shopBox}>
           {shops !== null
             ? (shops.length == 0
-              ? <p>ヤニ切れ</p>
+              ? <Typography className={classes.bodyContent}>Should I smoke or not, should smoke</Typography>
                 : <ToggleShow shops={shops}/>)
-            : <p>該当するお店を見つけることが出来ませんでした。。。</p>
+            : <div className={classes.bodyContent}>該当するお店を見つけることが出来ませんでした。。。</div>
           }
         </div>
-        </Container>
       <Footer />
       </ThemeProvider>
       <ScrollTop refTop={refTop}/>
-        {/* <Button variant='contained' color='primary' onClick={scrollTop}/> */}
-      </Box>
+      </div>
   )
 } 
 

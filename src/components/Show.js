@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import InfoShop from './InfoShop'
 import { makeStyles } from '@material-ui/core/styles'
 import GridList from '@material-ui/core/GridList'
+import ListSubheader from '@material-ui/core/ListSubheader'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import Typography from '@material-ui/core/Typography'
@@ -18,25 +20,24 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
-    marginTop: '8px',
-    // paddingBottom: '8px',
+    backgroundColor: "#fff",
+    // width: 
   },
   gridList: {
     width: 1000,
-    paddingBottom: 100,
+    paddingBottom: 300,
+  },
+  tile: {
+    border: "solid 0.1em #dde5b6",
   },
   icon: {
-    color: '#004d40',
+    color: '#a98467',
   },
   button: {
     color: '#fff',
   },
 }))
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-})
 
 const Show = (props) => {
   const classes = useStyles()
@@ -44,7 +45,6 @@ const Show = (props) => {
   const [openShopIndex, setOpenShopIndex] = useState(0)
   const shop = props.shops
   // console.log(props.shops)
-  const shopGoogleMapUrl =  `https://maps.google.com/maps?q=${shop[openShopIndex].lat},${shop[openShopIndex].lng}`
   const handleClickOpen = (index) => {
     setOpen(true)
     setOpenShopIndex(index)
@@ -56,9 +56,12 @@ const Show = (props) => {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={150} className={classes.gridList} spacing={10} cols={3}>
+      <GridList cellHeight={150} className={classes.gridList} spacing={5} cols={4}>
+        <GridListTile cols={4} style={{ height: 'auto' }}>
+          <ListSubheader component="div">Smoking shops</ListSubheader>
+        </GridListTile>
         {shop.map((shop, index) => (
-          <GridListTile key={shop.id} >
+          <GridListTile key={shop.id} className={classes.tile}>
             <img srcSet={shop.photo.pc.l} alt={shop.name} />
               <GridListTileBar
                 title={shop.name}
@@ -71,37 +74,7 @@ const Show = (props) => {
             </GridListTile>
         ))}
       </GridList>
-        <Dialog
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-slide-title"
-          aria-describedby="alert-dialog-slide-description"
-          maxWidth="xl"
-          fullwidth="true"
-          open={open}
-            >
-            <DialogTitle id="alert-dialog-slide-title">{shop[openShopIndex].name}</DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-slide-description">
-                住所：{shop[openShopIndex].address} &nbsp;
-                <a href={shopGoogleMapUrl} target="_blank" rel="noopener noreferrer" className={classes.icon}>→googleMap</a>
-                <br/>
-                営業時間：{shop[openShopIndex].open} <br/>
-                wifi：{shop[openShopIndex].wifi}
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                Disagree
-              </Button>
-              <Typography >
-                <a id="urlButton" href={shop[openShopIndex].urls.pc} target="_blank" rel="noopener noreferrer" className={classes.icon} >
-                  →HotPepper
-                </a>
-              </Typography>
-            </DialogActions>
-        </Dialog>
+      <InfoShop shop={shop} open={open} openShopIndex={openShopIndex} handleClose={handleClose}/>
     </div>
   )
 }
