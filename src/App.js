@@ -6,8 +6,6 @@ import Footer from './components/Footer'
 import Form from './components/Form'
 import ToggleShow from './components/ToggleShow'
 import ScrollTop from './components/ScrollTop'
-import SearchState from './components/SearchState'
-import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 // import Fab from '@material-ui/core/Fab'
@@ -24,17 +22,19 @@ const theme = createMuiTheme({
   },
 })
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: "#fff",
     minHeight: "100vh",
   },
   bodyContainer: {
     color: "#6c584c",
-  },
+    // margin: "0 auto",
+    // width: "50%",
+    },
   bodyContent: {
     textAlign: "center",
-    fontSize: "5rem",
+    fontSize: "3rem",
   },
   shopBox: {
     paddingTop: "8px",
@@ -91,7 +91,7 @@ const App = () => {
             ? (shops.length == 0
               ? <Typography className={classes.bodyContent}>Should I smoke or not, should smoke</Typography>
                 : <ToggleShow shops={shops}/>)
-            : <div className={classes.bodyContent}>該当するお店を見つけることが出来ませんでした。。。</div>
+            : <Typography className={classes.bodyContent}>Sorry! don't find shop...</Typography>
           }
         </div>
       <Footer />

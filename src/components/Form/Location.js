@@ -89,7 +89,7 @@ const Location = (props) => {
               : <Alert severity="error">（Failed）取得に失敗しました 位置情報の設定を確認後、再度実行をお願いいたします。</Alert>
             )
           ): (
-            <p>soon get yani</p>
+            <p></p>
           )
         }
       </div>

@@ -9,7 +9,23 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(() => ({
   searchForm: {
     // display: "flex",
+    // margin: "0 auto",
+    // width: "50%",
+    // textAlign: "center",
+  },
+  Form: {
     textAlign: "center",
+  },
+  buttonStyle: {
+    // display: "flex",
+    marginLeft: "auto",
+    marginRight: "auto",
+    // width: "15em",
+  },
+  button: {
+    backgroundColor: '#E0794C',
+    color: "#6c584c",
+    marginTop: '8px',
   },
 }))
 
@@ -38,13 +54,17 @@ const Form = (props) => {
 
   return (
     <div className={classes.searchForm}>
-      <form onSubmit={postWord}>
+      <form onSubmit={postWord} className={classes.Form}>
         <SelectForm genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
         <KeywordForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />
-        <SubmitButton />
         <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} searchLat={searchLat}/>
+        <div className={classes.buttonStyle}>
+          <SubmitButton /> &nbsp;
+          <Button variant='contained' onClick={deleteForm} className={classes.button}>
+            Delete
+          </Button>
+        </div>
       </form>
-      <Button onClick={deleteForm}>delete</Button>
     </div>
   )
 }

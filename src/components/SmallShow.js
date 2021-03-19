@@ -49,17 +49,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-// const Transition = React.forwardRef(function Transition(props, ref) {
-//   return <Slide direction="up" ref={ref} {...props} />;
-// })
-
 const SmallShow = (props) => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   const [openShopIndex, setOpenShopIndex] = useState(0)
   const shop = props.shops
   // console.log(props.shops)
-  const shopGoogleMapUrl =  `https://maps.google.com/maps?q=${shop[openShopIndex].lat},${shop[openShopIndex].lng}`
   const handleClickOpen = (index) => {
     setOpen(true)
     setOpenShopIndex(index)

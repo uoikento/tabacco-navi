@@ -27,22 +27,19 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles()
-  // const color = theme()
   return (
-    // <ThemeProvider theme={theme}>
     <div className="Header" >
-        <AppBar position="static" className={classes.bar}>
-          <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              Yaninavi
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        </div>
-      // </ThemeProvider>
+      <AppBar position="static" className={classes.bar}>
+        <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Yaninavi
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
   )
 }
 
