@@ -4,12 +4,11 @@ import Genre from './services/genres'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Form from './components/Form'
+import Notification from './components/Notification'
 import ToggleShow from './components/ToggleShow'
 import ScrollTop from './components/ScrollTop'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
-// import Fab from '@material-ui/core/Fab'
-// import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
@@ -46,6 +45,7 @@ const useStyles = makeStyles(() => ({
 const App = () => {
   const [shops, setShops] = useState([])
   const [genres, setGenres] = useState([])
+  const [errorMessage, setErrorMessage] = useState(null)
   const refTop = useRef()
   const classes = useStyles()
   
@@ -70,10 +70,16 @@ const App = () => {
         } else {
           setShops(smoke)
         }
-        // console.log(smoke)
+        const non = smoke.map(smoke => smoke.non_smoking)
+        console.log(non)
       })
       .catch(error => {
-        console.error('error')
+        setErrorMessage(
+          'Please include at least one condition.'
+        )
+        setTimeout(() => {
+          setErrorMessage(null)
+        },5000)
       })
   }
 
@@ -82,8 +88,8 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <div display={'none'} ref={refTop}/>
       <Header />
-      <Container className={classes.bodyContainer}>
-          {/* <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchLng={searchLng} searchGenre={searchGenre}/> */}
+        <Container className={classes.bodyContainer}>
+        <Notification message={errorMessage} />
         <Form postWord={postWord} genres={genres} />
         </Container>
         <div className={classes.shopBox}>

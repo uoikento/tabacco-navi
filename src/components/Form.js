@@ -3,24 +3,19 @@ import KeywordForm from './Form/KeywordForm'
 import Location from './Form/Location'
 import SubmitButton from './Form/SubmitButton'
 import SelectForm from './Form/SelectForm'
+import SearchState from  './SearchState'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   searchForm: {
-    // display: "flex",
-    // margin: "0 auto",
-    // width: "50%",
-    // textAlign: "center",
-  },
-  Form: {
     textAlign: "center",
   },
+  Form: {
+  },
   buttonStyle: {
-    // display: "flex",
     marginLeft: "auto",
     marginRight: "auto",
-    // width: "15em",
   },
   button: {
     backgroundColor: '#E0794C',
@@ -54,6 +49,7 @@ const Form = (props) => {
 
   return (
     <div className={classes.searchForm}>
+      <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchGenre={searchGenre}/>
       <form onSubmit={postWord} className={classes.Form}>
         <SelectForm genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
         <KeywordForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />

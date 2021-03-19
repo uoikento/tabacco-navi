@@ -25,7 +25,7 @@ const KeywordForm = (props) => {
         className={classes.formControl}
         value={props.searchKeyword}
         onChange={handleSearchKeywordChange}
-        placeholder="キーワード"
+        placeholder="Keyword"
         />
     </div>
   )

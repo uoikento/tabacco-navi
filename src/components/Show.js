@@ -52,7 +52,7 @@ const Show = (props) => {
     <div className={classes.root}>
       <GridList cellHeight={150} className={classes.gridList} spacing={5} cols={4}>
         <GridListTile cols={4} style={{ height: 'auto' }}>
-          <ListSubheader component="div">Smoking shops</ListSubheader>
+          <ListSubheader component="div">Smoking shops &nbsp; Result{shop.length}</ListSubheader>
         </GridListTile>
         {shop.map((shop, index) => (
           <GridListTile key={shop.id} className={classes.tile} >
