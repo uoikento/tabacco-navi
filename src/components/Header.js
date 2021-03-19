@@ -28,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const classes = useStyles()
   return (
-    <div className="Header" >
-      <AppBar position="static" className={classes.bar}>
+      <div className={classes.bar}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
@@ -38,8 +37,7 @@ const Header = () => {
             Yaninavi
           </Typography>
         </Toolbar>
-      </AppBar>
-    </div>
+      </div>
   )
 }
 

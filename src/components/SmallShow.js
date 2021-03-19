@@ -67,7 +67,7 @@ const SmallShow = (props) => {
   return (
     <div className={classes.root}>
       <Grid direction="column">
-        <Typography>Smoking shops</Typography>
+        <Typography>Smoking shops  Result {shop.length}</Typography>
       {shop.map((shop, index) => (
         <Card key={shop.id} className={classes.card}>
           <CardMedia className={classes.cover} image={shop.photo.pc.l} title={shop.name} />

@@ -14,19 +14,19 @@ const Theme = createMuiTheme({
       root: {
         backgroundColor: "#fff",
         },
-      }
-    }
+      },
+    },
   })
 const deleteTheme = createMuiTheme({
   overrides: {
     MuiFab: {
       root: {
-        backgroundColor:"#5D8017"
-      }
-    }
-  }
+        backgroundColor:"#5D8017",
+      },
+    },
+  },
 })
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   box: {
     marginTop: '8px',
   },
@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 140,
     left: 'auto',
     position: 'fixed',
+    zIndex: 2,
   },
 })) 
 
