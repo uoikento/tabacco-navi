@@ -4,6 +4,7 @@ import Genre from './services/genres'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Form from './components/Form'
+import GetArea from './components/GetArea'
 import Notification from './components/Notification'
 import ToggleShow from './components/ToggleShow'
 import ScrollTop from './components/ScrollTop'
@@ -47,6 +48,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 const App = () => {
+  console.log("app")
   const [shops, setShops] = useState([])
   const [genres, setGenres] = useState([])
   const [errorMessage, setErrorMessage] = useState(null)
@@ -86,7 +88,7 @@ const App = () => {
         },5000)
       })
   }
-
+  
   return (
     <div className={classes.root} >
       <ThemeProvider theme={theme}>
@@ -106,7 +108,8 @@ const App = () => {
         </div>
       <Footer />
       </ThemeProvider>
-      <ScrollTop refTop={refTop}/>
+      <ScrollTop refTop={refTop} />
+      <GetArea/>
       </div>
   )
 } 

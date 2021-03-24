@@ -12,3 +12,4 @@ searchKeyword = { searchKeyword }
 searchLat = { searchLat }
 searchLng = { searchLng }
 searchGenre = { searchGenre }
+

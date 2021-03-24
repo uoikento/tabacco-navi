@@ -25,6 +25,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 const Form = (props) => {
+  console.log("Form")
   const [searchKeyword, setSearchKeyword] = useState('')
   const [searchLat, setSearchLat] = useState('')
   const [searchLng, setSearchLng] = useState('')
