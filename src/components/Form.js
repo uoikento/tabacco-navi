@@ -3,8 +3,10 @@ import KeywordForm from './Form/KeywordForm'
 import Location from './Form/Location'
 import SubmitButton from './Form/SubmitButton'
 import SelectForm from './Form/SelectForm'
-import SearchState from  './SearchState'
+import SearchState from './SearchState'
+import GetArea from './GetArea'
 import Button from '@material-ui/core/Button'
+import Drawer from '@material-ui/core/Drawer'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
@@ -30,6 +32,7 @@ const Form = (props) => {
   const [searchLat, setSearchLat] = useState('')
   const [searchLng, setSearchLng] = useState('')
   const [searchGenre, setSearchGenre] = useState([])
+  const [drawState, setDrawState] = useState(false)
   const classes = useStyles()
 
   const postWord = (e) => {
@@ -61,6 +64,10 @@ const Form = (props) => {
             Delete
           </Button>
         </div>
+        <Button onClick={() => setDrawState(true)}>Select Area</Button>
+        <Drawer open={drawState} onClose={() => setDrawState(false)}>
+          <GetArea/>
+        </Drawer>
       </form>
     </div>
   )

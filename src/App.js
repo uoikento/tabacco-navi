@@ -4,7 +4,6 @@ import Genre from './services/genres'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Form from './components/Form'
-import GetArea from './components/GetArea'
 import Notification from './components/Notification'
 import ToggleShow from './components/ToggleShow'
 import ScrollTop from './components/ScrollTop'
@@ -109,7 +108,6 @@ const App = () => {
       <Footer />
       </ThemeProvider>
       <ScrollTop refTop={refTop} />
-      <GetArea/>
       </div>
   )
 } 
