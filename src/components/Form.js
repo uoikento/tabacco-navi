@@ -32,16 +32,19 @@ const Form = (props) => {
   const [searchLat, setSearchLat] = useState('')
   const [searchLng, setSearchLng] = useState('')
   const [searchGenre, setSearchGenre] = useState([])
+  const [selectMiddle, setSelectMiddle] = useState([])
   const [drawState, setDrawState] = useState(false)
   const classes = useStyles()
-
+  const middleCode = selectMiddle.map(selectMiddle => selectMiddle.code)
+  console.log(middleCode)
   const postWord = (e) => {
     e.preventDefault()
     props.postWord({
       keyword: searchKeyword,
       genre: searchGenre.code,
       lat: searchLat,
-      lng: searchLng
+      lng: searchLng,
+      middle_area: middleCode 
     })
   }
 
@@ -67,7 +70,7 @@ const Form = (props) => {
         </div>
         <Button onClick={() => setDrawState(true)}>Select Area</Button>
         <Drawer open={drawState} onClose={() => setDrawState(false)}>
-          <GetArea/>
+          <GetArea selectMiddle={selectMiddle} setSelectMiddle={setSelectMiddle}/>
         </Drawer>
       </form>
     </div>
