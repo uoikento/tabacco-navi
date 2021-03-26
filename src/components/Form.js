@@ -44,6 +44,7 @@ const Form = (props) => {
       lng: searchLng
     })
   }
+
   const deleteForm = () => {
     setSearchKeyword('')
     setSearchGenre('')

@@ -94,8 +94,8 @@ const App = () => {
         <div display={'none'} ref={refTop}/>
       <Header />
         <Container className={classes.bodyContainer}>
-        <Notification message={errorMessage} />
-        <Form postWord={postWord} genres={genres} />
+          <Notification message={errorMessage} />
+          <Form postWord={postWord} genres={genres} />
         </Container>
         <div className={classes.shopBox}>
           {shops !== null

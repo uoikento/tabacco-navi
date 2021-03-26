@@ -1,15 +1,20 @@
 import React, {useState, useEffect} from "react"
 import Area from '../services/areas'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import Checkbox from '@material-ui/core/Checkbox'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
+// import Tabs from '@material-ui/core/Tabs'
+// import Tab from '@material-ui/core/Tab'
+// import Checkbox from '@material-ui/core/Checkbox'
+// import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
-import FormLabel from '@material-ui/core/FormLabel'
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import Collapse from '@material-ui/core/Collapse'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import InputLabel from '@material-ui/core/InputLabel'
+import TextField from '@material-ui/core/TextField'
+// import FormLabel from '@material-ui/core/FormLabel'
+// import Typography from '@material-ui/core/Typography'
+// import Box from '@material-ui/core/Box'
+// import Collapse from '@material-ui/core/Collapse'
 import { makeStyles } from '@material-ui/core/styles'
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,142 +22,119 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
     height: 224,
+    width: "30vw"
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
   },
 }))
 
-const large_service_area = [
-  {
-  code: "SS10",
-  name: "関東"
-  },
-  {
-  code: "SS20",
-  name: "関西"
-  },
-  {
-  code: "SS30",
-  name: "東海"
-  },
-  {
-  code: "SS40",
-  name: "北海道"
-  },
-  {
-  code: "SS50",
-  name: "東北"
-  },
-  {
-  code: "SS60",
-  name: "北陸・甲信越"
-  },
-  {
-  code: "SS70",
-  name: "中国"
-  },
-  {
-  code: "SS80",
-  name: "四国"
-  },
-  {
-  code: "SS90",
-  name: "九州・沖縄"
-  }
+const prefecture = [
+  {code: "Z011", name: "東京"},
+  {code: "Z012", name: "神奈川"},
+  {code: "Z013", name: "埼玉"},
+  {code: "Z014", name: "千葉"},
+  {code: "Z015", name: "茨城"},
+  {code: "Z016", name: "栃木"},
+  {code: "Z017", name: "群馬"},
+  {code: "Z021", name: "滋賀"},
+  {code: "Z022", name: "京都"},
+  {code: "Z023", name: "大阪"},
+  {code: "Z024", name: "兵庫"},
+  {code: "Z025", name: "奈良"},
+  {code: "Z026", name: "和歌山"},
+  {code: "Z031", name: "岐阜"},
+  {code: "Z032", name: "静岡"},
+  {code: "Z033", name: "愛知"},
+  {code: "Z034", name: "三重"},
+  {code: "Z041", name: "北海道"},
+  {code: "Z051", name: "青森"},
+  {code: "Z052", name: "岩手"},
+  {code: "Z053", name: "宮城"},
+  {code: "Z054", name: "秋田"},
+  {code: "Z055", name: "山形"},
+  {code: "Z056", name: "福島"},
+  {code: "Z061", name: "新潟"},
+  {code: "Z062", name: "富山"},
+  {code: "Z063", name: "石川"},
+  {code: "Z064", name: "福井"},
+  {code: "Z065", name: "山梨"},
+  {code: "Z066", name: "長野"},
+  {code: "Z071", name: "鳥取"},
+  {code: "Z072", name: "島根"},
+  {code: "Z073", name: "岡山"},
+  {code: "Z074", name: "広島"},
+  {code: "Z075", name: "山口"},
+  {code: "Z081", name: "徳島"},
+  {code: "Z082", name: "香川"},
+  {code: "Z083", name: "愛媛"},
+  {code: "Z084", name: "高知"},
+  {code: "Z091", name: "福岡"},
+  {code: "Z092", name: "佐賀"},
+  {code: "Z093", name: "長崎"},
+  {code: "Z094", name: "熊本"},
+  {code: "Z095", name: "大分"},
+  {code: "Z096", name: "宮崎"},
+  {code: "Z097", name: "鹿児島"},
+  {code: "Z098", name: "沖縄"},
 ]
 
 const GetArea = () => {
   const classes = useStyles()
-  const [areas, setAreas] = useState([])
+  const [middleAreas, setMiddleAreas] = useState([])
   const [largeArea, setLargeArea] = useState([])
-  const [serviceCode, setServiceCode] = useState(0)
+  const [prefectureCode, setPrefectureCode] = useState("")
+  const [serachMiddleKeyword, setSearchMiddleKeyword] = useState("")
 
-  useEffect(() => {
+console.log(prefectureCode)
+  // useEffect(() => {
+  //   Area
+  //     .getAreas()
+  //     .then(allAreas => {
+  //       setAreas(allAreas)
+  //       // console.log(allAreas)
+  //   })
+  // }, [])
+
+  const handlePrefectureChange = (e) => {
+    setPrefectureCode(e.target.value)
+  }
+
+  const handleMiddleChange = (e) => {
+    const keyword = e.target.value
     Area
-      .getAreas()
-      .then(allAreas => {
-        setAreas(allAreas)
-        // console.log(allAreas)
-    })
-  }, [])
-
-  // const handleLargeServiceArea = (code, i) => {
-  //   setLargeArea(areas.filter(area => area.large_service_area.code == `${code}`))
-  // }
-  // console.log(largeArea)
-
-  const [checked, setChecked] = useState(false)
-
-  const [value, setValue] = useState(0)
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  }
-  // const [checked, setChecked] = React.useState(false);
-
-  // const handleChange = () => {
-  //   setChecked((prev) => !prev);
-  // }
-  const a11yProps = (index) => {
-    return {
-      id: `vertical-tab-${index}`,
-      'aria-controls': `vertical-tabpanel-${index}`,
+      .getAreas({
+        large_area: prefectureCode,
+        keyword: `${keyword}`
+      })
+      .then(middleAreas => {
+        setMiddleAreas(middleAreas)
+      })
     }
-  }
-  // const LargeAreaSelect = () => {
-  //   return (
-      
-  //   )
-  // }
-  
-  const clickHandle = (s_code) => {
-    console.log(s_code)
-    // setChecked((prev) => !prev)
-    setLargeArea(areas.filter(area => area.large_service_area.code == `${s_code}`))
-  }
 
-  function TabPanel(props) {
-    const { children, value, index, ...other } = props
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`vertical-tabpanel-${index}`}
-        aria-labelledby={`vertical-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box p={3}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    )
-  }
-  const Index = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  
+  // if (prefecture.length !== 0) {
+    
+  // }
+console.log(middleAreas)
   return (
-    <div className={classes.root}>
-      <FormLabel>Select Area</FormLabel>
-    <Tabs
-      orientation="vertical"
-      variant="scrollable"
-      value={value}
-      onChange={handleChange}
-      aria-label="Vertical tabs example"
-      className={classes.tabs}
-    >
-      {large_service_area.map((service, index) =>
-        <Tab label={service.name} {...a11yProps(index)} onClick={() => clickHandle(service.code)} />
-        )}
-      </Tabs>
-      {Index.map(i => 
-        <TabPanel value={value} index={i}>
-          {largeArea.map(l_area => <li>{l_area.name}</li>)}
-        </TabPanel>
-        )}
-    </div>
+    <FormControl className={classes.root}>
+      <InputLabel>Prefecture</InputLabel>
+      <Select
+        // className={classes.form}
+        value={prefectureCode}
+        onChange={handlePrefectureChange}
+      >
+        <MenuItem key='delete' value={''}>-</MenuItem>
+          {prefecture.map((prefecture) => (
+            <MenuItem key={prefecture.name} value={prefecture.code} >{prefecture.name}</MenuItem>
+          ))}
+      </Select>
+      <TextField id="standard-basic" label="Standard" onChange={handleMiddleChange} />
+      {middleAreas.length !== 0
+        ? <Typography>{middleAreas.map(middle => middle.name)}</Typography>
+        : <Typography>kakak</Typography>
+      }
+    </FormControl>
   )
 }
 

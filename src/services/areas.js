@@ -2,14 +2,14 @@ import axios from 'axios'
 
 const baseUrl = 'http://localhost:3001/api/areas'
 
-const getAreas = () => {
-  const getResponse = axios.get(baseUrl)
+const getAreas = (object) => {
+  const getRequest = axios.post(baseUrl, object)
   return (
-    getResponse.then(res => {
-      const areas = res.data["large_area"]
-      console.log(areas)
-      return areas
+    getRequest.then(response => {
+      const data = response.data.middle_area
+      // console.log(data)
+      return data
     })
-  )
+  ) 
 }
 export default { getAreas }

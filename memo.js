@@ -62,4 +62,51 @@ xport default function VerticalTabs() {
           labelPlacement="start"
         >
             </FormControlLabel>
-          </FormControl>
+      </FormControl>
+      <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+const large_service_area = [
+  {
+  code: "SS10",
+  name: "関東"
+  },
+  {
+  code: "SS20",
+  name: "関西"
+  },
+  {
+  code: "SS30",
+  name: "東海"
+  },
+  {
+  code: "SS40",
+  name: "北海道"
+  },
+  {
+  code: "SS50",
+  name: "東北"
+  },
+  {
+  code: "SS60",
+  name: "北陸・甲信越"
+  },
+  {
+  code: "SS70",
+  name: "中国"
+  },
+  {
+  code: "SS80",
+  name: "四国"
+  },
+  {
+  code: "SS90",
+  name: "九州・沖縄"
+  }
+]
+
+Area
+      .getAreas(prefectureCode)
+      .then(middleAreas => {
+        setMiddleAreas(middleAreas)
+      })
