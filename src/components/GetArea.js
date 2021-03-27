@@ -64,13 +64,14 @@ const GetArea = (props) => {
     if (selectMiddle.length == 1) {
       props.setSelectMiddle([])
     } else {
-      const deleteSelectMiddle = selectMiddle.splice(index, 1)
-      console.log(deleteSelectMiddle)
-      props.setSelectMiddle(deleteSelectMiddle)
+      const newSelectMiddle = [...selectMiddle]
+      newSelectMiddle.splice(index, 1)
+      props.setSelectMiddle(newSelectMiddle)
     }
+    console.table(selectMiddle)
   }
 
-console.log(selectMiddle)
+console.table(selectMiddle)
 // console.log(middleAreas)
   return (
     <div className={classes.root}>

@@ -36,7 +36,7 @@ const Form = (props) => {
   const [drawState, setDrawState] = useState(false)
   const classes = useStyles()
   const middleCode = selectMiddle.map(selectMiddle => selectMiddle.code)
-  console.log(middleCode)
+  // console.log(middleCode)
   const postWord = (e) => {
     e.preventDefault()
     props.postWord({
