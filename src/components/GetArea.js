@@ -7,12 +7,14 @@ import MenuItem from '@material-ui/core/MenuItem'
 import InputLabel from '@material-ui/core/InputLabel'
 import TextField from '@material-ui/core/TextField'
 import Chip from '@material-ui/core/Chip'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { makeStyles } from '@material-ui/core/styles'
-import { Typography } from "@material-ui/core"
+import { Typography, IconButton } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "30vw",
+    // width: "30vw",
+    minWidth: 150,
     height: 224,
   },
   form: {
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
     margin: theme.spacing(1),
-    minWidth: 120,
+    // minWidth: 150,
   },
   title: {
     marginBottom: "2em",
@@ -71,10 +73,17 @@ const GetArea = (props) => {
     console.table(selectMiddle)
   }
 
+  const handleClose = () => {
+    props.setDrawState(false)
+  }
+
 console.table(selectMiddle)
 // console.log(middleAreas)
   return (
     <div className={classes.root}>
+      <IconButton onClick={handleClose}>
+        <ChevronLeftIcon/>
+      </IconButton>
       <Typography className={classes.title}>select area</Typography>
         {selectMiddle.length !== 0
           && <div>{selectMiddle.map((selectMiddle, index) => <Chip size="small" key={index} label={selectMiddle.name} onDelete={() => handleDelete(index)} color="primary" />) }</div>

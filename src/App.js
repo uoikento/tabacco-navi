@@ -13,7 +13,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import './App.css'
-// import backIcon from './components/16240.png'
 
 const font = "'Corben', sans-serif"
 const theme = createMuiTheme({
@@ -26,14 +25,12 @@ const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: "#fff",
     minHeight: "100vh",
-    // backgroundImage: `url(${backIcon})`,
     backgroundRepeat: "repeat-y",
     backgroundSize: "5%",
   },
   bodyContainer: {
     color: "#6c584c",
     marginTop: "2em",
-    // width: "50%",
     },
   bodyContent: {
     textAlign: "center",
