@@ -13,7 +13,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import './App.css'
-// import backIcon from './components/16240.png'
 
 const font = "'Corben', sans-serif"
 const theme = createMuiTheme({
@@ -26,14 +25,12 @@ const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: "#fff",
     minHeight: "100vh",
-    // backgroundImage: `url(${backIcon})`,
     backgroundRepeat: "repeat-y",
     backgroundSize: "5%",
   },
   bodyContainer: {
     color: "#6c584c",
     marginTop: "2em",
-    // width: "50%",
     },
   bodyContent: {
     textAlign: "center",
@@ -47,6 +44,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 const App = () => {
+  console.log("app")
   const [shops, setShops] = useState([])
   const [genres, setGenres] = useState([])
   const [errorMessage, setErrorMessage] = useState(null)
@@ -86,15 +84,15 @@ const App = () => {
         },5000)
       })
   }
-
+  
   return (
     <div className={classes.root} >
       <ThemeProvider theme={theme}>
         <div display={'none'} ref={refTop}/>
       <Header />
         <Container className={classes.bodyContainer}>
-        <Notification message={errorMessage} />
-        <Form postWord={postWord} genres={genres} />
+          <Notification message={errorMessage} />
+          <Form postWord={postWord} genres={genres} />
         </Container>
         <div className={classes.shopBox}>
           {shops !== null
@@ -106,7 +104,7 @@ const App = () => {
         </div>
       <Footer />
       </ThemeProvider>
-      <ScrollTop refTop={refTop}/>
+      <ScrollTop refTop={refTop} />
       </div>
   )
 } 

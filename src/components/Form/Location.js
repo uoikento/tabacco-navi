@@ -78,7 +78,7 @@ const Location = (props) => {
     <div className={classes.box}>
       <div>
         {locateState !== 'default'
-          ? (locateState == 'lodding'
+          && (locateState == 'lodding'
             ? <CircularProgress />
             : (locateState == 'get'
               ? <Snackbar
@@ -89,8 +89,6 @@ const Location = (props) => {
                 />
               : <Alert severity="error">（Failed）取得に失敗しました 位置情報の設定を確認後、再度実行をお願いいたします。</Alert>
             )
-          ): (
-            <p></p>
           )
         }
       </div>

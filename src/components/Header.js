@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Header = () => {
+  console.log("Header")
   const classes = useStyles()
   return (
       <div className={classes.bar}>

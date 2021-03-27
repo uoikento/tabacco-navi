@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Show = (props) => {
+  console.log("Show")
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   const [openShopIndex, setOpenShopIndex] = useState(0)
