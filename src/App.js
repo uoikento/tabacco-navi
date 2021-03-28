@@ -87,8 +87,7 @@ const App = () => {
   
   return (
     <div className={classes.root} >
-      <ThemeProvider theme={theme}>
-        <div display={'none'} ref={refTop}/>
+      <div display={'none'} ref={refTop}/>
       {/* <Header /> */}
         <Container className={classes.bodyContainer}>
           <Notification message={errorMessage} />
@@ -103,7 +102,6 @@ const App = () => {
           }
         </div>
       <Footer />
-      </ThemeProvider>
       <ScrollTop refTop={refTop} />
       </div>
   )

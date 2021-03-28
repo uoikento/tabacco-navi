@@ -39,7 +39,7 @@ const Header = () => {
         </Typography>
         <div className={classes.headerRight}>
           <a href="https://qiita.com/fishperson19"> Qiita </a>
-          </div>
+        </div>
       </Toolbar>
     </div>
   )

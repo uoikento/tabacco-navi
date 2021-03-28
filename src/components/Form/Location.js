@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Fab from '@material-ui/core/Fab'
+import Button from '@material-ui/core/Button'
 import GpsNotFixedIcon from '@material-ui/icons/GpsNotFixed'
 import GpsOffIcon from '@material-ui/icons/GpsOff';
 import Snackbar from '@material-ui/core/Snackbar'
@@ -10,7 +10,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
 const Theme = createMuiTheme({
   overrides: {
-    MuiFab: {
+    MuiButton: {
       root: {
         backgroundColor: "#fff",
         },
@@ -19,7 +19,7 @@ const Theme = createMuiTheme({
   })
 const deleteTheme = createMuiTheme({
   overrides: {
-    MuiFab: {
+    MuiButton: {
       root: {
         backgroundColor:"#5D8017",
       },
@@ -31,13 +31,13 @@ const useStyles = makeStyles(() => ({
     marginTop: '8px',
   },
   button: {
-    margin: 0,
-    top: 'auto',
-    right: 20,
-    bottom: 140,
-    left: 'auto',
-    position: 'fixed',
-    zIndex: 2,
+    // margin: 0,
+    // top: 'auto',
+    // right: 20,
+    // bottom: 140,
+    // left: 'auto',
+    // position: 'fixed',
+    // zIndex: 2,
   },
 })) 
 
@@ -94,14 +94,14 @@ const Location = (props) => {
       </div>
         {props.searchLat !== ''
         ? <MuiThemeProvider theme={Theme}>
-            <Fab className={classes.button}  size="medium" onClick={handleDeleteLocation}>
+            <Button className={classes.button}  onClick={handleDeleteLocation}>
               <GpsNotFixedIcon />
-            </Fab>
+            </Button>
           </MuiThemeProvider>
         : <MuiThemeProvider theme={deleteTheme}>
-            <Fab className={classes.button} size="medium" onClick={handleSearchLocation}>
+            <Button className={classes.button} onClick={handleSearchLocation}>
               <GpsOffIcon color="error" />
-            </Fab>
+            </Button>
           </MuiThemeProvider>
           }
       {/* <div style={hideVisible}>

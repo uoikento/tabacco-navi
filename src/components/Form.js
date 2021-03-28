@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import KeywordForm from './Form/KeywordForm'
 import Location from './Form/Location'
 import SubmitButton from './Form/SubmitButton'
-import SelectForm from './Form/SelectForm'
+import SelectGenre from './Form/SelectGenre'
 import SearchState from './Form/SearchState'
 import GetArea from './Form/GetArea'
 import Button from '@material-ui/core/Button'
@@ -11,9 +11,17 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   searchForm: {
-    textAlign: "center",
+  },
+  header: {
+    maxHeight: "20vh",
+    backgroundColor: "#ddd",
+  },
+  locate: {
+    display: "flex",
+    marginLeft: "80%",
   },
   Form: {
+    textAlign: "center",
   },
   buttonStyle: {
     marginLeft: "auto",
@@ -59,12 +67,16 @@ const Form = (props) => {
 
   return (
     <div className={classes.searchForm}>
+      <div className={classes.header}>
+        <div className={classes.locate}>
+        <Button variant='contained' color='primary' onClick={() => setDrawState(true)}>Select Area</Button>
+          <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} searchLat={searchLat} />
+          </div>
+      </div>
       <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchGenre={searchGenre}/>
       <form onSubmit={postWord} className={classes.Form}>
-        <SelectForm genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
+        <SelectGenre genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
         <KeywordForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />
-        <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} searchLat={searchLat}/>
-        <Button variant='contained' color='primary' onClick={() => setDrawState(true)}>Select Area</Button>
         <div className={classes.buttonStyle}>
           <SubmitButton /> &nbsp;
           <Button variant='contained' onClick={deleteForm} className={classes.button}>

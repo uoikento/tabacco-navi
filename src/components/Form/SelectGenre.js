@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const SelectForm = (props) => {
+const SelectGenre = (props) => {
   const classes = useStyles()
   const genre = props.genres
 
@@ -42,4 +42,4 @@ const SelectForm = (props) => {
   )
 }
 
-export default SelectForm
+export default SelectGenre
