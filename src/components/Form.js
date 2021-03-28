@@ -7,27 +7,34 @@ import SearchState from './Form/SearchState'
 import GetArea from './Form/GetArea'
 import Button from '@material-ui/core/Button'
 import Drawer from '@material-ui/core/Drawer'
+import GpsNotFixedIcon from '@material-ui/icons/GpsNotFixed'
 import { makeStyles } from '@material-ui/core/styles'
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   searchForm: {
   },
   header: {
     maxHeight: "20vh",
-    backgroundColor: "#ddd",
+    // backgroundColor: "#ddd",
   },
   locate: {
     display: "flex",
-    marginLeft: "80%",
+    marginLeft: "70%",
   },
   Form: {
     textAlign: "center",
+  },
+  selectAreaButton: {
+    backgroundColor: "#fff",
+    color: "#5c4d7d",
+    textTransform: "none",
   },
   buttonStyle: {
     marginLeft: "auto",
     marginRight: "auto",
   },
-  button: {
+  deleteButton: {
     backgroundColor: '#E0794C',
     color: "#6c584c",
     marginTop: '8px',
@@ -69,9 +76,12 @@ const Form = (props) => {
     <div className={classes.searchForm}>
       <div className={classes.header}>
         <div className={classes.locate}>
-        <Button variant='contained' color='primary' onClick={() => setDrawState(true)}>Select Area</Button>
+          <Button className={classes.selectAreaButton} onClick={() => setDrawState(true)}>
+            <GpsNotFixedIcon />
+            <Typography>Select Area</Typography>
+          </Button>
           <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} searchLat={searchLat} />
-          </div>
+        </div>
       </div>
       <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchGenre={searchGenre}/>
       <form onSubmit={postWord} className={classes.Form}>
@@ -79,7 +89,7 @@ const Form = (props) => {
         <KeywordForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />
         <div className={classes.buttonStyle}>
           <SubmitButton /> &nbsp;
-          <Button variant='contained' onClick={deleteForm} className={classes.button}>
+          <Button variant='contained' onClick={deleteForm} className={classes.deleteButton}>
             Delete
           </Button>
         </div>

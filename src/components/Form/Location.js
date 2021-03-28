@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import GpsNotFixedIcon from '@material-ui/icons/GpsNotFixed'
-import GpsOffIcon from '@material-ui/icons/GpsOff';
+import LocationOnIcon from '@material-ui/icons/LocationOn'
+import LocationOffIcon from '@material-ui/icons/LocationOff'
 import Snackbar from '@material-ui/core/Snackbar'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Alert from '@material-ui/lab/Alert'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core/styles'
+import { Typography } from '@material-ui/core';
 
 const Theme = createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
-        backgroundColor: "#fff",
+        textTransform: "none",
         },
       },
     },
@@ -21,24 +22,34 @@ const deleteTheme = createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
-        backgroundColor:"#5D8017",
+        // backgroundColor: "#5D8017",
+        
       },
     },
   },
 })
 const useStyles = makeStyles(() => ({
   box: {
-    marginTop: '8px',
+    
   },
-  button: {
+  resetButton: {
+    color: "#b7094c",
+    textTransform: "none",
+  },
+  getButton: {
+    color: "#0091ad",
+    textTransform: "none",
+  },
+  progress: {
+    color: "#0091ad",
     // margin: 0,
-    // top: 'auto',
-    // right: 20,
-    // bottom: 140,
-    // left: 'auto',
-    // position: 'fixed',
-    // zIndex: 2,
-  },
+    top: 'auto',
+    bottom: "50%",
+    left: 'auto',
+    right: "50%",
+    position: 'fixed',
+    zIndex: 2,
+  }
 })) 
 
 const Location = (props) => {
@@ -79,7 +90,7 @@ const Location = (props) => {
       <div>
         {locateState !== 'default'
           && (locateState == 'lodding'
-            ? <CircularProgress />
+          ? <CircularProgress className={classes.progress}/>
             : (locateState == 'get'
               ? <Snackbar
                 open={state}
@@ -93,16 +104,14 @@ const Location = (props) => {
         }
       </div>
         {props.searchLat !== ''
-        ? <MuiThemeProvider theme={Theme}>
-            <Button className={classes.button}  onClick={handleDeleteLocation}>
-              <GpsNotFixedIcon />
+        ? <Button className={classes.resetButton} onClick={handleDeleteLocation}>
+              <LocationOffIcon color="error" />
+              <Typography >Reset Locate</Typography>
             </Button>
-          </MuiThemeProvider>
-        : <MuiThemeProvider theme={deleteTheme}>
-            <Button className={classes.button} onClick={handleSearchLocation}>
-              <GpsOffIcon color="error" />
+        : <Button className={classes.getButton} onClick={handleSearchLocation}>
+              <LocationOnIcon />
+              <Typography>Get Locate</Typography>
             </Button>
-          </MuiThemeProvider>
           }
       {/* <div style={hideVisible}>
         <Button variant='contained' color='primary' id='getLocation' className={classes.button} onClick={handleSearchLocation}>
