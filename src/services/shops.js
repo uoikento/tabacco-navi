@@ -1,5 +1,5 @@
 import axios from "axios"
-const baseUrl = 'http://localhost:3001/api/shops'
+const baseUrl = 'https://yaninavi.herokuapp.com/api/shops'
 
 const getShops = (keyword) => {
   const getRequest = axios.post(baseUrl, keyword )

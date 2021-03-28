@@ -3,8 +3,8 @@ import KeywordForm from './Form/KeywordForm'
 import Location from './Form/Location'
 import SubmitButton from './Form/SubmitButton'
 import SelectForm from './Form/SelectForm'
-import SearchState from './SearchState'
-import GetArea from './GetArea'
+import SearchState from './Form/SearchState'
+import GetArea from './Form/GetArea'
 import Button from '@material-ui/core/Button'
 import Drawer from '@material-ui/core/Drawer'
 import { makeStyles } from '@material-ui/core/styles'
@@ -64,13 +64,13 @@ const Form = (props) => {
         <SelectForm genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
         <KeywordForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />
         <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} searchLat={searchLat}/>
+        <Button variant='contained' color='primary' onClick={() => setDrawState(true)}>Select Area</Button>
         <div className={classes.buttonStyle}>
           <SubmitButton /> &nbsp;
           <Button variant='contained' onClick={deleteForm} className={classes.button}>
             Delete
           </Button>
         </div>
-        <Button onClick={() => setDrawState(true)}>Select Area</Button>
         <Drawer open={drawState} onClose={() => setDrawState(false)}>
           <GetArea selectMiddle={selectMiddle} setSelectMiddle={setSelectMiddle} setDrawState={setDrawState}/>
         </Drawer>

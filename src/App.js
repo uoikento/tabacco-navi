@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Shop from './services/shops'
 import Genre from './services/genres'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from './components/Atoms/Header'
+import Footer from './components/Atoms/Footer'
+import Notification from './components/Atoms/Notification'
+import ScrollTop from './components/Atoms/ScrollTop'
 import Form from './components/Form'
-import Notification from './components/Notification'
 import ToggleShow from './components/ToggleShow'
-import ScrollTop from './components/ScrollTop'
+import TopImage from './components/TopImage'
+
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -23,10 +25,8 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles(() => ({
   root: {
-    backgroundColor: "#fff",
+    // backgroundColor: "#fefae0",
     minHeight: "100vh",
-    backgroundRepeat: "repeat-y",
-    backgroundSize: "5%",
   },
   bodyContainer: {
     color: "#6c584c",
@@ -34,12 +34,12 @@ const useStyles = makeStyles(() => ({
     },
   bodyContent: {
     textAlign: "center",
-    fontSize: "3rem",
+    // fontSize: "3rem",
   },
   shopBox: {
     paddingTop: "8px",
     margin: "0 2em 6em",
-    backgroundColor: "#fff",
+    // backgroundColor: "#fefae0",
   }
 }))
 
@@ -89,7 +89,7 @@ const App = () => {
     <div className={classes.root} >
       <ThemeProvider theme={theme}>
         <div display={'none'} ref={refTop}/>
-      <Header />
+      {/* <Header /> */}
         <Container className={classes.bodyContainer}>
           <Notification message={errorMessage} />
           <Form postWord={postWord} genres={genres} />
@@ -97,7 +97,7 @@ const App = () => {
         <div className={classes.shopBox}>
           {shops !== null
             ? (shops.length == 0
-              ? <Typography className={classes.bodyContent}>Should I smoke or not, should smoke</Typography>
+              ? <TopImage/>
                 : <ToggleShow shops={shops}/>)
             : <Typography className={classes.bodyContent}>Sorry! don't find shop...</Typography>
           }

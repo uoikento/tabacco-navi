@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/api/genres'
+const baseUrl = 'https://yaninavi.herokuapp.com/api/genres'
 
 const getGenres = () => {
   const getResponse = axios.get(baseUrl)
