@@ -96,7 +96,7 @@ const App = () => {
         <div className={classes.shopBox}>
           {shops !== null
             ? (shops.length == 0
-              ? <TopImage/>
+              ? <p>yani</p>
                 : <ToggleShow shops={shops}/>)
             : <Typography className={classes.bodyContent}>Sorry! don't find shop...</Typography>
           }

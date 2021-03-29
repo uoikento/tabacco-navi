@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
+import Yani from './Atoms/image/tanyani.jpeg'
 import KeywordForm from './Form/KeywordForm'
 import Location from './Form/Location'
 import SubmitButton from './Form/SubmitButton'
@@ -8,36 +9,61 @@ import GetArea from './Form/GetArea'
 import Button from '@material-ui/core/Button'
 import Drawer from '@material-ui/core/Drawer'
 import GpsNotFixedIcon from '@material-ui/icons/GpsNotFixed'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import { makeStyles } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core';
+import { Typography, Paper } from '@material-ui/core'
 
 const useStyles = makeStyles(() => ({
   searchForm: {
+    // margin: "0 10%",
   },
   header: {
     maxHeight: "20vh",
-    // backgroundColor: "#ddd",
+    display: "flex",
+    // marginLeft: "auto",
   },
   locate: {
     display: "flex",
-    marginLeft: "70%",
+    marginLeft: "auto",
+  },
+  title: {
+    // backgroundImage: `url(${Yani})`,
+    // backgroundRepeat: "no-repeat",
+    // color: "#e63946",
+    objectFit: "cover",
+    width: "30%",
+    textAlign: "center",
+    marginLeft: "35%",
   },
   Form: {
+    display: "flex",
     textAlign: "center",
+    paddingLeft: "15%",
+    // marginRight: "auto",
+    maxHeight: "10%",
+  },
+  paper: {
+    // backgroundColor: "#ddd",
+    borderRadius: 4,
+    display: "flex",
+    minWidth: "80%",
   },
   selectAreaButton: {
     backgroundColor: "#fff",
     color: "#5c4d7d",
     textTransform: "none",
+    padding: "unset",
   },
   buttonStyle: {
+    minWidth: "5%",
     marginLeft: "auto",
-    marginRight: "auto",
+    marginTop: '8px',
   },
   deleteButton: {
-    backgroundColor: '#E0794C',
+    // backgroundColor: '#E0794C',
     color: "#6c584c",
     marginTop: '8px',
+    minWidth: "5%",
   },
 }))
 
@@ -75,6 +101,7 @@ const Form = (props) => {
   return (
     <div className={classes.searchForm}>
       <div className={classes.header}>
+        <div><p></p></div>
         <div className={classes.locate}>
           <Button className={classes.selectAreaButton} onClick={() => setDrawState(true)}>
             <GpsNotFixedIcon />
@@ -83,20 +110,25 @@ const Form = (props) => {
           <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} searchLat={searchLat} />
         </div>
       </div>
-      <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchGenre={searchGenre}/>
+      {/* <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchGenre={searchGenre} /> */}
+      {/* <div className={classes.title} > */}
+        <img src={Yani} className={classes.title}/>
+      {/* </div> */}
       <form onSubmit={postWord} className={classes.Form}>
-        <SelectGenre genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
-        <KeywordForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />
-        <div className={classes.buttonStyle}>
-          <SubmitButton /> &nbsp;
-          <Button variant='contained' onClick={deleteForm} className={classes.deleteButton}>
-            Delete
-          </Button>
-        </div>
+        <Paper className={classes.paper}>
+          <SelectGenre genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
+          <KeywordForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />
+          <div className={classes.buttonStyle}>
+            <SubmitButton />
+          </div>
+          </Paper>
+            <Button onClick={deleteForm} className={classes.deleteButton}>
+              <DeleteForeverIcon fontSize="large" color="error"/>
+            </Button>
+      </form>
         <Drawer open={drawState} onClose={() => setDrawState(false)}>
           <GetArea selectMiddle={selectMiddle} setSelectMiddle={setSelectMiddle} setDrawState={setDrawState}/>
         </Drawer>
-      </form>
     </div>
   )
 }

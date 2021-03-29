@@ -25,7 +25,6 @@ const useStyles = makeStyles({
 const TopImage = () => {
   const classes = useStyles()
   return (
-    // <Zoom check={true}>
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -46,7 +45,6 @@ const TopImage = () => {
       </CardActionArea>
       <CardActions></CardActions>
       </Card>
-      // </Zoom>
   )
 }
 

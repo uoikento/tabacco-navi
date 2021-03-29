@@ -35,10 +35,14 @@ const useStyles = makeStyles(() => ({
   resetButton: {
     color: "#b7094c",
     textTransform: "none",
+    height: "100%",
+    padding: "unset",
   },
   getButton: {
     color: "#0091ad",
     textTransform: "none",
+    height: "100%",
+    padding: "unset",
   },
   progress: {
     color: "#0091ad",
@@ -87,7 +91,6 @@ const Location = (props) => {
 
   return (
     <div className={classes.box}>
-      <div>
         {locateState !== 'default'
           && (locateState == 'lodding'
           ? <CircularProgress className={classes.progress}/>
@@ -102,7 +105,6 @@ const Location = (props) => {
             )
           )
         }
-      </div>
         {props.searchLat !== ''
         ? <Button className={classes.resetButton} onClick={handleDeleteLocation}>
               <LocationOffIcon color="error" />

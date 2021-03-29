@@ -6,9 +6,9 @@ import InputLabel from '@material-ui/core/InputLabel'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
-  selectControl: {
+  formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: "30%",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -24,21 +24,19 @@ const SelectGenre = (props) => {
   }
 
   return (
-    <div>
-      <FormControl className={classes.selectControl}>
-        <InputLabel id="demo-simple-select-label">Genre</InputLabel>
-        <Select
-          // className={classes.form}
-          value={props.searchGenre}
-          onChange={handleSelectChange}
-        >
-          <MenuItem key='delete' value={''}>-</MenuItem>
-          {genre.map((genre) => (
-            <MenuItem key={genre.label} value={genre} >{genre.label}</MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl className={classes.formControl}>
+      <InputLabel id="demo-simple-select-label">Genre</InputLabel>
+      <Select
+        // className={classes.form}
+        value={props.searchGenre}
+        onChange={handleSelectChange}
+      >
+        <MenuItem key='delete' value={''}>-</MenuItem>
+        {genre.map((genre) => (
+          <MenuItem key={genre.label} value={genre} >{genre.label}</MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   )
 }
 
