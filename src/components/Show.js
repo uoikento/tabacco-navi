@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gridList: {
     width: 1000,
-    paddingBottom: 300,
+    paddingBottom: 50,
   },
   tile: {
     border: "solid 0.1em #dde5b6",

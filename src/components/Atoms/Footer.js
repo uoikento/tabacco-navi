@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
     top: "auto",
     bottom: 0,
     color: "#6c584c",
-    backgroundColor: "#fefae0",
+    backgroundColor: "#fff",
     // backgroundColor: "rgba(254,250,224,0.5)",
   },
   title: {
