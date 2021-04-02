@@ -17,25 +17,10 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import './App.css'
 
 const font = "'Corben', sans-serif"
-const theme = createMuiTheme({
-  typography: {
-    h6: {
-      fontSize: '1.2rem',
-      '@media (min-width:600px)': {
-        fontSize: '1.5rem',
-      },
-      [createMuiTheme().breakpoints.up('ms')]: {
-        fontSize: '2.4rem',
-      },
-    },
-  },
-  typography:  {
-    fontFamily: font,
-  }
-})
 
 const useStyles = makeStyles(() => ({
   root: {
+    // fontFamily: font,
     // backgroundColor: "#fefae0",
     minHeight: "100vh",
   },
@@ -68,6 +53,19 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState(null)
   const refTop = useRef()
   const classes = useStyles()
+  const theme = createMuiTheme()
+  // theme.typography = {
+  //   fontFamily: font,
+  // }
+  theme.typography.h6 = {
+  fontSize: '0.5rem',
+  '@media (min-width:600px)': {
+    fontSize: '0.8rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.0rem',
+    },
+  }
   
   useEffect(() => {
     Genre

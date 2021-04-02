@@ -31,7 +31,7 @@ const useStyles = makeStyles(() => ({
     // backgroundRepeat: "no-repeat",
     // color: "#e63946",
     objectFit: "cover",
-    width: "30%",
+    width: "50%",
     textAlign: "center",
     marginLeft: "35%",
   },
@@ -105,7 +105,7 @@ const Form = (props) => {
         <div className={classes.locate}>
           <Button className={classes.selectAreaButton} onClick={() => setDrawState(true)}>
             <GpsNotFixedIcon />
-            <Typography>Select Area</Typography>
+            <Typography variant="h6">Select Area</Typography>
           </Button>
           <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} searchLat={searchLat} />
         </div>

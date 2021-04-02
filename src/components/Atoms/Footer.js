@@ -26,7 +26,7 @@ const Footer = () => {
   return (
       <AppBar className={classes.bar}>
         <div className={classes.title}>
-          <Typography>
+          <Typography variant="h6">
             Powered by <a href="http://webservice.recruit.co.jp/" className={classes.icon}>ホットペッパー Webサービス</a> <br/>
             Produced by Ips.k <br/>
           </Typography>
