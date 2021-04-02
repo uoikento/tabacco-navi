@@ -13,8 +13,7 @@ import { Typography, IconButton } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // width: "30vw",
-    maxWidth: "30vh",
+    maxWidth: "40vh",
     height: 224,
   },
   form: {
@@ -22,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
     margin: theme.spacing(1),
-    // minWidth: 150,
+    minWidth: 150,
   },
   title: {
     marginBottom: "2em",

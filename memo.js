@@ -110,3 +110,17 @@ Area
       .then(middleAreas => {
         setMiddleAreas(middleAreas)
       })
+    {locateState !== 'default'
+          && (locateState == 'lodding'
+          ? <CircularProgress className={classes.progress}/>
+            : (locateState == 'get'
+              ? <Snackbar
+                open={state}
+                onClose={handleClose}
+                message="位置情報を取得しました"
+                key={locateState}
+                />
+              : <Alert severity="error">（Failed）取得に失敗しました 位置情報の設定を確認後、再度実行をお願いいたします。</Alert>
+            )
+          )
+        }

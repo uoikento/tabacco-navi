@@ -59,11 +59,7 @@ const useStyles = makeStyles(() => ({
 const Location = (props) => {
   const classes = useStyles()
   const [locateState, setLocateState] = useState('default')
-  // const [visible, setVisible] = useState(false)
   const [state, setState] = useState(false)
-
-  // const hideVisible = { display: visible ? 'none': '' }
-  // const showVisible = { display: visible ? '' : 'none' }
 
   const handleSearchLocation = () => {
     setLocateState('lodding')
@@ -115,16 +111,6 @@ const Location = (props) => {
               <Typography>Get Locate</Typography>
             </Button>
           }
-      {/* <div style={hideVisible}>
-        <Button variant='contained' color='primary' id='getLocation' className={classes.button} onClick={handleSearchLocation}>
-              位置情報取得
-        </Button>
-      </div>
-      <div style={showVisible}>
-        <Button variant='contained' color='primary' id='getLocation' className={classes.button} onClick={handleDeleteLocation}>
-              位置情報削除
-        </Button>
-      </div> */}
     </div>
   )
 }

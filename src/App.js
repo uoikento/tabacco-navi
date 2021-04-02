@@ -5,10 +5,10 @@ import Header from './components/Atoms/Header'
 import Footer from './components/Atoms/Footer'
 import Notification from './components/Atoms/Notification'
 import ScrollTop from './components/Atoms/ScrollTop'
+import LoadingSkelton from './components/Atoms/LoadingSkelton'
 import Form from './components/Form'
 import ToggleShow from './components/ToggleShow'
 import TopImage from './components/TopImage'
-
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -19,8 +19,19 @@ import './App.css'
 const font = "'Corben', sans-serif"
 const theme = createMuiTheme({
   typography: {
-    fontFamily: font,
+    h6: {
+      fontSize: '1.2rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.5rem',
+      },
+      [createMuiTheme().breakpoints.up('ms')]: {
+        fontSize: '2.4rem',
+      },
+    },
   },
+  typography:  {
+    fontFamily: font,
+  }
 })
 
 const useStyles = makeStyles(() => ({
@@ -40,12 +51,19 @@ const useStyles = makeStyles(() => ({
     paddingTop: "8px",
     margin: "0 2em 6em",
     // backgroundColor: "#fefae0",
-  }
+  },
+  skelton: {
+    margin: "0 auto",
+    minHeight: "300px",
+    width: "50%",
+    minWidth: "100px",
+  },
 }))
 
 const App = () => {
   console.log("app")
   const [shops, setShops] = useState([])
+  const [shopState, setShopState] = useState('default')
   const [genres, setGenres] = useState([])
   const [errorMessage, setErrorMessage] = useState(null)
   const refTop = useRef()
@@ -62,6 +80,7 @@ const App = () => {
   
   const postWord = (searchObject) => {
     console.log(searchObject)
+    setShopState('loading')
     Shop
       .getShops(searchObject)
       .then(searchShops => {
@@ -69,8 +88,10 @@ const App = () => {
         const smoke = searchShops.filter(shop => shop.non_smoking !== "全面禁煙")
         if (smoke.length === 0) {
           setShops(null)
+          setShopState('get')
         } else {
           setShops(smoke)
+          setShopState('get')
         }
         const non = smoke.map(smoke => smoke.non_smoking)
         console.log(non)
@@ -89,18 +110,27 @@ const App = () => {
     <div className={classes.root} >
       <div display={'none'} ref={refTop}/>
       {/* <Header /> */}
+      <ThemeProvider theme={theme}>
         <Container className={classes.bodyContainer}>
           <Notification message={errorMessage} />
           <Form postWord={postWord} genres={genres} />
         </Container>
         <div className={classes.shopBox}>
-          {shops !== null
-            ? (shops.length !== 0
-              && <ToggleShow shops={shops}/>)
-            : <Typography className={classes.bodyContent}>Sorry! don't find shop...</Typography>
+          {shopState !== 'default'
+            && (shopState == 'loading')
+              ?  <LoadingSkelton/>
+              : (shopState == 'get'
+                && (shops !== null
+                  ? (shops.length !== 0
+                      && <ToggleShow shops={shops} />
+                    )
+                  : <Typography variant="h6" className={classes.bodyContent}>Sorry! don't find shop...</Typography>
+                )
+              )
           }
         </div>
-      <Footer />
+        <Footer />
+      </ThemeProvider>
       <ScrollTop refTop={refTop} />
       </div>
   )

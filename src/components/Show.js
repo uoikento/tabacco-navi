@@ -8,14 +8,13 @@ import GridListTileBar from '@material-ui/core/GridListTileBar'
 import Button from '@material-ui/core/Button'
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: "#fff",
-    // width: 
   },
   gridList: {
     width: 1000,
