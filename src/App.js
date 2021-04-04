@@ -16,8 +16,6 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import './App.css'
 
-const font = "'Corben', sans-serif"
-
 const useStyles = makeStyles(() => ({
   root: {
     // fontFamily: font,
@@ -45,6 +43,8 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
+
+
 const App = () => {
   console.log("app")
   const [shops, setShops] = useState([])
@@ -54,9 +54,13 @@ const App = () => {
   const refTop = useRef()
   const classes = useStyles()
   const theme = createMuiTheme()
-  // theme.typography = {
-  //   fontFamily: font,
-  // }
+
+  const font = "'Corben', sans-serif"
+  const themeFontFamily = createMuiTheme({
+    typography: {
+      fontFamily: font,
+    }
+  })
   theme.typography.h6 = {
   fontSize: '0.5rem',
   '@media (min-width:600px)': {
@@ -66,7 +70,7 @@ const App = () => {
     fontSize: '1.0rem',
     },
   }
-  
+
   useEffect(() => {
     Genre
       .getGenres()
@@ -108,6 +112,7 @@ const App = () => {
     <div className={classes.root} >
       <div display={'none'} ref={refTop}/>
       {/* <Header /> */}
+      <ThemeProvider theme={themeFontFamily}>
       <ThemeProvider theme={theme}>
         <Container className={classes.bodyContainer}>
           <Notification message={errorMessage} />
@@ -128,7 +133,8 @@ const App = () => {
           }
         </div>
         <Footer />
-      </ThemeProvider>
+        </ThemeProvider>
+        </ThemeProvider>
       <ScrollTop refTop={refTop} />
       </div>
   )

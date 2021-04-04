@@ -27,11 +27,8 @@ const useStyles = makeStyles(() => ({
     marginLeft: "auto",
   },
   title: {
-    // backgroundImage: `url(${Yani})`,
-    // backgroundRepeat: "no-repeat",
-    // color: "#e63946",
     objectFit: "cover",
-    width: "50%",
+    width: "30%",
     textAlign: "center",
     marginLeft: "35%",
   },
