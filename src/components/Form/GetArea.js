@@ -11,6 +11,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography, IconButton } from "@material-ui/core"
 
+import { RectGraduallyShowLoading } from 'react-loadingg'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "40vh",
@@ -20,18 +22,19 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    margin: theme.spacing(1),
+    margin: theme.spacing(3),
     minWidth: 150,
   },
   title: {
+    color: "#5c4d7d",
     marginBottom: "2em",
     textAlign:"center"
   },
   select: {
-    width: "50%",
+    width: "70%",
   },
   text: {
-    width: "50%",
+    width: "70%",
   },
 }))
 
@@ -40,12 +43,14 @@ const GetArea = (props) => {
   const [middleAreas, setMiddleAreas] = useState([])
   const [prefectureCode, setPrefectureCode] = useState("")
   const selectMiddle = props.selectMiddle
-// console.log(prefectureCode)
+  const [loadingBool, setLoadingBool] = useState(false)
+
   const handlePrefectureChange = (e) => {
     setPrefectureCode(e.target.value)
   }
 
   const handleMiddleChange = (e) => {
+    setLoadingBool(true)
     const keyword = e.target.value
     Area
       .getAreas({
@@ -54,6 +59,7 @@ const GetArea = (props) => {
       })
       .then(middleAreas => {
         setMiddleAreas(middleAreas)
+        setLoadingBool(false)
       })
     }
 
@@ -83,9 +89,13 @@ console.table(selectMiddle)
       <IconButton onClick={handleClose}>
         <ChevronLeftIcon/>
       </IconButton>
-      <Typography className={classes.title}>select area</Typography>
+      <Typography variant="h5" className={classes.title}>Select Area</Typography>
         {selectMiddle.length !== 0
-          && <div>{selectMiddle.map((selectMiddle, index) => <Chip size="small" key={index} label={selectMiddle.name} onDelete={() => handleDelete(index)} color="primary" />) }</div>
+        && <div>
+            {selectMiddle.map((selectMiddle, index) =>
+              <Chip size="small" key={index} label={selectMiddle.name} onDelete={() => handleDelete(index)} color="primary" />
+            )}
+          </div>
         }
       <FormControl className={classes.form}>
       <InputLabel>Prefecture</InputLabel>
@@ -116,6 +126,9 @@ console.table(selectMiddle)
           </div>
       }
       </FormControl>
+      {loadingBool &&
+        <RectGraduallyShowLoading />
+      }
     </div>
   )
 }

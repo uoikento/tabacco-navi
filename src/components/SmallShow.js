@@ -18,6 +18,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '8px',
     // paddingBottom: '8px',
   },
+  subTitle: {
+    display: "flex",
+  },
+  number: {
+    color: "#ffb703",
+    paddingLeft: "0.3em",
+  },
   icon: {
     color: '#004d40',
   },
@@ -40,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
     height: 80,
     marginTop: "0,5em",
-    borderTop: "solid 0.2em #dde5b6",
+    borderTop: "solid 0.2em #ced4da",
     color: "#6c584c",
   },
   button: {
@@ -65,6 +72,7 @@ const SmallShow = (props) => {
     setOpen(true)
     setOpenShopIndex(index)
   }
+
   const handleClose = () => {
     setOpen(false)
     setOpenShopIndex(0)
@@ -73,7 +81,10 @@ const SmallShow = (props) => {
   return (
     <div className={classes.root}>
       <Grid direction="column">
-        <Typography>Smoking shops  Result {shop.length}</Typography>
+        <div className={classes.subTitle}>
+          <Typography variant="h5"> search Result </Typography>
+          <Typography className={classes.number} >{shop.length}</Typography>
+        </div>
       {shop.map((shop, index) => (
         <Card key={shop.id} className={classes.card}>
           <CardMedia className={classes.cover} image={shop.photo.pc.l} title={shop.name} />

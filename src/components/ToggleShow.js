@@ -14,7 +14,6 @@ const ToggleShow = (props) => {
         capture: false,
         passive: true,
       })
-  
       return () => window.removeEventListener(`resize`, updateWidth)
     })
 

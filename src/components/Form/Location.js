@@ -58,11 +58,11 @@ const useStyles = makeStyles(() => ({
 
 const Location = (props) => {
   const classes = useStyles()
-  const [locateState, setLocateState] = useState('default')
+  const [loadingState, setLoadingState] = useState('default')
   const [state, setState] = useState(false)
 
   const handleSearchLocation = () => {
-    setLocateState('lodding')
+    setLoadingState('loading')
     navigator.geolocation.getCurrentPosition(position => {
         console.log(position.coords.latitude)
         console.log(position.coords.longitude)
@@ -70,14 +70,15 @@ const Location = (props) => {
         const lng = position.coords.longitude
         props.setSearchLat(lat)
         props.setSearchLng(lng)
-      setLocateState('get')
+      setLoadingState('get')
       setState(true)
     })
   }
   const handleDeleteLocation = () => {
     props.setSearchLat('')
     props.setSearchLng('')
-    setLocateState('default')
+    setLoadingState('default')
+    setState(true)
   }
 
   const handleClose = () => {
@@ -87,15 +88,15 @@ const Location = (props) => {
 
   return (
     <div className={classes.box}>
-        {locateState !== 'default'
-          && (locateState == 'lodding'
+        {loadingState !== 'default'
+          && (loadingState == 'loading'
           ? <CircularProgress className={classes.progress}/>
-            : (locateState == 'get'
+            : (loadingState == 'get'
               ? <Snackbar
                 open={state}
                 onClose={handleClose}
                 message="位置情報を取得しました"
-                key={locateState}
+                key={loadingState}
                 />
               : <Alert severity="error">（Failed）取得に失敗しました 位置情報の設定を確認後、再度実行をお願いいたします。</Alert>
             )
@@ -103,13 +104,14 @@ const Location = (props) => {
         }
         {props.searchLat !== ''
         ? <Button className={classes.resetButton} onClick={handleDeleteLocation}>
-              <LocationOffIcon color="error" />
-              <Typography variant="h5">Reset Locate</Typography>
-            </Button>
+            <LocationOffIcon color="error" />
+            <Typography variant="h5">Reset Locate</Typography>
+          </Button>
         : <Button className={classes.getButton} onClick={handleSearchLocation}>
-              <LocationOnIcon />
-              <Typography variant="h5">Get Locate</Typography>
-            </Button>
+            <LocationOnIcon />
+            <Typography variant="h5">Get Locate</Typography>
+            {state && <Snackbar open={state} onClose={handleClose} message="位置情報を削除しました" key={loadingState} />}
+          </Button>
           }
     </div>
   )
