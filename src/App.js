@@ -70,6 +70,15 @@ const App = () => {
     fontSize: '1.0rem',
     },
   }
+  theme.typography.h5 = {
+    fontSize: '0.5rem',
+    '@media (min-width:600px)': {
+      fontSize: '0.9rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.2rem',
+    },
+  }
 
   useEffect(() => {
     Genre

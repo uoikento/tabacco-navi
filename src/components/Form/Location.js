@@ -104,11 +104,11 @@ const Location = (props) => {
         {props.searchLat !== ''
         ? <Button className={classes.resetButton} onClick={handleDeleteLocation}>
               <LocationOffIcon color="error" />
-              <Typography variant="h6">Reset Locate</Typography>
+              <Typography variant="h5">Reset Locate</Typography>
             </Button>
         : <Button className={classes.getButton} onClick={handleSearchLocation}>
               <LocationOnIcon />
-              <Typography variant="h6">Get Locate</Typography>
+              <Typography variant="h5">Get Locate</Typography>
             </Button>
           }
     </div>

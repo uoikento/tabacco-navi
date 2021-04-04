@@ -102,7 +102,7 @@ const Form = (props) => {
         <div className={classes.locate}>
           <Button className={classes.selectAreaButton} onClick={() => setDrawState(true)}>
             <GpsNotFixedIcon />
-            <Typography variant="h6">Select Area</Typography>
+            <Typography variant="h5">Select Area</Typography>
           </Button>
           <Location setSearchLat={setSearchLat} setSearchLng={setSearchLng} searchLat={searchLat} />
         </div>

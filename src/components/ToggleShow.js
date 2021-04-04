@@ -4,7 +4,7 @@ import SmallShow from './SmallShow'
 const ToggleShow = (props) => {
   // console.log('hello')
   const shops = props.shops
-  const WIDTH_THRESHOLD = 768
+  const WIDTH_THRESHOLD = 1000
   const [width, setWidth] = useState(window.innerWidth)
   const updateWidth = () => {
     setWidth(window.innerWidth)

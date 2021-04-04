@@ -6,6 +6,7 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 
 
 const useStyles = makeStyles(() => ({
@@ -21,7 +22,15 @@ const useStyles = makeStyles(() => ({
     paddingBottom: 50,
   },
   tile: {
-    border: "solid 0.1em #dde5b6",
+    border: "solid 0.1em #ced4da",
+  },
+  subHeader: {
+    display: "flex",
+  },
+  number: {
+    color: "#ffb703",
+    paddingTop: "0.2em",
+    paddingLeft: "0.2em",
   },
   icon: {
     color: '#a98467',
@@ -52,7 +61,10 @@ const Show = (props) => {
     <div className={classes.root}>
       <GridList cellHeight={150} className={classes.gridList} spacing={5} cols={4}>
         <GridListTile cols={4} style={{ height: 'auto' }}>
-          <ListSubheader component="div">Smoking shops &nbsp; Result{shop.length}</ListSubheader>
+          <ListSubheader component="div" className={classes.subHeader} >
+            <Typography variant="h5">search Result </Typography>
+            <Typography variant="h4" className={classes.number} >{shop.length}</Typography>
+          </ListSubheader>
         </GridListTile>
         {shop.map((shop, index) => (
           <GridListTile key={shop.id} className={classes.tile} >
