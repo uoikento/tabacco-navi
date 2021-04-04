@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import {prefecture} from './Atoms/prefecture'
-import Area from '../services/areas'
+import {prefecture} from '../Atoms/prefecture'
+import Area from '../../services/areas'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -13,8 +13,7 @@ import { Typography, IconButton } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // width: "30vw",
-    minWidth: 150,
+    maxWidth: "40vh",
     height: 224,
   },
   form: {
@@ -22,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
     margin: theme.spacing(1),
-    // minWidth: 150,
+    minWidth: 150,
   },
   title: {
     marginBottom: "2em",

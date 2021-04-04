@@ -8,7 +8,8 @@ const useStyles = makeStyles(() => ({
     top: "auto",
     bottom: 0,
     color: "#6c584c",
-    backgroundColor: "#dde5b6",
+    backgroundColor: "#fff",
+    // backgroundColor: "rgba(254,250,224,0.5)",
   },
   title: {
     textAlign: "center",
@@ -25,9 +26,9 @@ const Footer = () => {
   return (
       <AppBar className={classes.bar}>
         <div className={classes.title}>
-          <Typography>
+          <Typography variant="h6">
+            Powered by <a href="http://webservice.recruit.co.jp/" className={classes.icon}>ホットペッパー Webサービス</a> <br/>
             Produced by Ips.k <br/>
-            Powered by <a href="http://webservice.recruit.co.jp/" className={classes.icon}>ホットペッパー Webサービス</a>
           </Typography>
         </div>
       </AppBar>

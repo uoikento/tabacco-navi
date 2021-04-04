@@ -48,6 +48,12 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "auto",
   },
 }))
+Typography.h6 = {
+  fontSize: '0,2rem',
+  '@media (min-width:600px)': {
+    fontSize: '0.3rem',
+  }
+}
 
 const SmallShow = (props) => {
   const classes = useStyles()
@@ -73,7 +79,7 @@ const SmallShow = (props) => {
           <CardMedia className={classes.cover} image={shop.photo.pc.l} title={shop.name} />
           <div className={classes.details}>
           <CardContent className={classes.content}>
-            <Typography variant="subtitle1">
+            <Typography variant="subtitle2">
               {shop.name}
             </Typography>
             </CardContent>

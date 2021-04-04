@@ -17,8 +17,6 @@ const ToggleShow = (props) => {
   
       return () => window.removeEventListener(`resize`, updateWidth)
     })
-  
-  //   // 初期表示時に画面幅に合わないコンポーネントが一瞬表示されてしまうのを防ぐ
 
   if (width < WIDTH_THRESHOLD) {
     // 画像をスライドショー表示する
