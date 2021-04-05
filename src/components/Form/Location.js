@@ -4,30 +4,12 @@ import Button from '@material-ui/core/Button'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import LocationOffIcon from '@material-ui/icons/LocationOff'
 import Snackbar from '@material-ui/core/Snackbar'
-import CircularProgress from '@material-ui/core/CircularProgress'
+// import CircularProgress from '@material-ui/core/CircularProgress'
 import Alert from '@material-ui/lab/Alert'
-import { createMuiTheme } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core';
+// import { createMuiTheme } from '@material-ui/core/styles'
+import { Typography } from '@material-ui/core'
+import { CircleLoading } from 'react-loadingg'
 
-const Theme = createMuiTheme({
-  overrides: {
-    MuiButton: {
-      root: {
-        textTransform: "none",
-        },
-      },
-    },
-  })
-const deleteTheme = createMuiTheme({
-  overrides: {
-    MuiButton: {
-      root: {
-        // backgroundColor: "#5D8017",
-        
-      },
-    },
-  },
-})
 const useStyles = makeStyles(() => ({
   box: {
     
@@ -57,6 +39,7 @@ const useStyles = makeStyles(() => ({
 })) 
 
 const Location = (props) => {
+  console.count("locate")
   const classes = useStyles()
   const [loadingState, setLoadingState] = useState('default')
   const [state, setState] = useState(false)
@@ -90,7 +73,7 @@ const Location = (props) => {
     <div className={classes.box}>
         {loadingState !== 'default'
           && (loadingState == 'loading'
-          ? <CircularProgress className={classes.progress}/>
+          ? <CircleLoading className={classes.progress}/>
             : (loadingState == 'get'
               ? <Snackbar
                 open={state}

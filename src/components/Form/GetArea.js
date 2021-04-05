@@ -10,8 +10,7 @@ import Chip from '@material-ui/core/Chip'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography, IconButton } from "@material-ui/core"
-
-import { RectGraduallyShowLoading } from 'react-loadingg'
+import { CoffeeLoading } from 'react-loadingg'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +29,14 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "2em",
     textAlign:"center"
   },
+  exampleChip: {
+    marginTop: "0.4em",
+    color: "#adb5bd",
+  },
+  exampleTitle: {
+    display: "flex",
+    justifyContent: "center",
+  },
   select: {
     width: "70%",
   },
@@ -39,14 +46,24 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const GetArea = (props) => {
+  console.count("area")
   const classes = useStyles()
   const [middleAreas, setMiddleAreas] = useState([])
   const [prefectureCode, setPrefectureCode] = useState("")
   const selectMiddle = props.selectMiddle
   const [loadingBool, setLoadingBool] = useState(false)
-
+  
   const handlePrefectureChange = (e) => {
+    setLoadingBool(true)
     setPrefectureCode(e.target.value)
+    Area
+      .getAreas({
+        large_area: prefectureCode,
+      })
+      .then(middleAreas => {
+        setMiddleAreas(middleAreas)
+        setLoadingBool(false)
+      })
   }
 
   const handleMiddleChange = (e) => {
@@ -82,7 +99,7 @@ const GetArea = (props) => {
     props.setDrawState(false)
   }
 
-console.table(selectMiddle)
+// console.table(selectMiddle)
 // console.log(middleAreas)
   return (
     <div className={classes.root}>
@@ -91,10 +108,15 @@ console.table(selectMiddle)
       </IconButton>
       <Typography variant="h5" className={classes.title}>Select Area</Typography>
         {selectMiddle.length !== 0
-        && <div>
+        ? <div>
             {selectMiddle.map((selectMiddle, index) =>
               <Chip size="small" key={index} label={selectMiddle.name} onDelete={() => handleDelete(index)} color="primary" />
             )}
+          </div>
+        : <div className={classes.exampleTitle}>
+            <Typography className={classes.exampleChip}>(例)</Typography>
+          <Chip size="small" key="0" label="銀座" />
+          <Chip size="small" key="1" label="梅田" />
           </div>
         }
       <FormControl className={classes.form}>
@@ -127,7 +149,7 @@ console.table(selectMiddle)
       }
       </FormControl>
       {loadingBool &&
-        <RectGraduallyShowLoading />
+        <CoffeeLoading color="#fb8500"/>
       }
     </div>
   )

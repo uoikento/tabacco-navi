@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Shop from './services/shops'
 import Genre from './services/genres'
-import Header from './components/Atoms/Header'
+// import Header from './components/Atoms/Header'
 import Footer from './components/Atoms/Footer'
 import Notification from './components/Atoms/Notification'
 import ScrollTop from './components/Atoms/ScrollTop'
 import LoadingSkelton from './components/Atoms/LoadingSkelton'
 import Form from './components/Form'
 import ToggleShow from './components/ToggleShow'
-import TopImage from './components/TopImage'
+// import TopImage from './components/TopImage'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -43,10 +43,8 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-
-
 const App = () => {
-  console.log("app")
+  console.count("app")
   const [shops, setShops] = useState([])
   const [shopState, setShopState] = useState('default')
   const [genres, setGenres] = useState([])

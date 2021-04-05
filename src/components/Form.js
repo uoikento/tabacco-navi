@@ -4,7 +4,7 @@ import KeywordForm from './Form/KeywordForm'
 import Location from './Form/Location'
 import SubmitButton from './Form/SubmitButton'
 import SelectGenre from './Form/SelectGenre'
-import SearchState from './Form/SearchState'
+// import SearchState from './Form/SearchState'
 import GetArea from './Form/GetArea'
 import Button from '@material-ui/core/Button'
 import Drawer from '@material-ui/core/Drawer'
@@ -65,7 +65,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 const Form = (props) => {
-  console.log("Form")
+  console.count("form")
   const [searchKeyword, setSearchKeyword] = useState('')
   const [searchLat, setSearchLat] = useState('')
   const [searchLng, setSearchLng] = useState('')

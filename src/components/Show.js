@@ -42,7 +42,7 @@ const useStyles = makeStyles(() => ({
 
 
 const Show = (props) => {
-  console.log("Show")
+  console.count("show")
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   const [openShopIndex, setOpenShopIndex] = useState(0)
