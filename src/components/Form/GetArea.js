@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import {prefecture} from '../Atoms/prefecture'
 import Area from '../../services/areas'
 import FormControl from '@material-ui/core/FormControl'
@@ -49,26 +49,13 @@ const GetArea = (props) => {
   console.count("area")
   const classes = useStyles()
   const [middleAreas, setMiddleAreas] = useState([])
-  const [prefectureCode, setPrefectureCode] = useState("")
-  const selectMiddle = props.selectMiddle
+  // const [prefectureCode, setPrefectureCode] = useState("")
   const [loadingBool, setLoadingBool] = useState(false)
-  
-  const handlePrefectureChange = (e) => {
-    setLoadingBool(true)
-    setPrefectureCode(e.target.value)
-    Area
-      .getAreas({
-        large_area: prefectureCode,
-      })
-      .then(middleAreas => {
-        setMiddleAreas(middleAreas)
-        setLoadingBool(false)
-      })
-  }
+  const inputPrefecture = useRef(null)
+  const selectMiddle = props.selectMiddle
 
-  const handleMiddleChange = (e) => {
+  const postArea = (prefectureCode, keyword) => {
     setLoadingBool(true)
-    const keyword = e.target.value
     Area
       .getAreas({
         large_area: prefectureCode,
@@ -78,7 +65,18 @@ const GetArea = (props) => {
         setMiddleAreas(middleAreas)
         setLoadingBool(false)
       })
-    }
+  }
+  
+  const handlePrefectureChange = (e) => {
+    // setLoadingBool(true)
+    // setPrefectureCode()
+    postArea(e.target.value)
+  }
+
+  const handleMiddleChange = (e) => {
+    const keyword = e.target.value
+    postArea(inputPrefecture.current.value, keyword)
+  }
 
   const handleClick = (m_code) => {
     props.setSelectMiddle(selectMiddle.concat(m_code))
@@ -122,9 +120,10 @@ const GetArea = (props) => {
       <FormControl className={classes.form}>
       <InputLabel>Prefecture</InputLabel>
       <Select
-        className={classes.select}
-        value={prefectureCode}
-        onChange={handlePrefectureChange}
+          className={classes.select}
+          ref={inputPrefecture}
+          // value={inputPrefecture}
+          onChange={handlePrefectureChange}
       >
         <MenuItem key='delete' value={''}>-</MenuItem>
           {prefecture.map((prefecture) => (
@@ -133,19 +132,22 @@ const GetArea = (props) => {
       </Select>
         <TextField className={classes.text} id="standard-basic" label="city" onChange={handleMiddleChange} />
       {middleAreas.length !== 0
-        && <div>
-            {middleAreas.map(middle =>
-              <Chip
-                variant="outlined"
-                size="small"
-                label={middle.name}
-                key={middle.code}
-                onClick={() => handleClick(middle)}
-                color="primary"
-              />
-              )
-            }
-          </div>
+          && (loadingBool == false
+            &&
+            < div >
+              {middleAreas.map(middle =>
+                <Chip
+                  variant="outlined"
+                  size="small"
+                  label={middle.name}
+                  key={middle.code}
+                  onClick={() => handleClick(middle)}
+                  color="primary"
+                />
+                )
+              }
+            </div>
+          )
       }
       </FormControl>
       {loadingBool &&
