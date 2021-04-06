@@ -122,6 +122,7 @@ const GetArea = (props) => {
       <Select
           className={classes.select}
           ref={inputPrefecture}
+          // value={inputPrefecture}
           onChange={handlePrefectureChange}
       >
         <MenuItem key='delete' value={''}>-</MenuItem>
@@ -131,19 +132,22 @@ const GetArea = (props) => {
       </Select>
         <TextField className={classes.text} id="standard-basic" label="city" onChange={handleMiddleChange} />
       {middleAreas.length !== 0
-        && <div>
-            {middleAreas.map(middle =>
-              <Chip
-                variant="outlined"
-                size="small"
-                label={middle.name}
-                key={middle.code}
-                onClick={() => handleClick(middle)}
-                color="primary"
-              />
-              )
-            }
-          </div>
+          && (loadingBool == false
+            &&
+            < div >
+              {middleAreas.map(middle =>
+                <Chip
+                  variant="outlined"
+                  size="small"
+                  label={middle.name}
+                  key={middle.code}
+                  onClick={() => handleClick(middle)}
+                  color="primary"
+                />
+                )
+              }
+            </div>
+          )
       }
       </FormControl>
       {loadingBool &&
