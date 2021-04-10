@@ -7,16 +7,18 @@ const ToggleShow = (props) => {
   const shops = props.shops
   const WIDTH_THRESHOLD = 1000
   const [width, setWidth] = useState(window.innerWidth)
+
   const updateWidth = () => {
     setWidth(window.innerWidth)
   }
-    useEffect(() => {
-      window.addEventListener(`resize`, updateWidth, {
-        capture: false,
-        passive: true,
-      })
-      return () => window.removeEventListener(`resize`, updateWidth)
+
+  useEffect(() => {
+    window.addEventListener(`resize`, updateWidth, {
+      capture: false,
+      passive: true,
     })
+    return () => window.removeEventListener(`resize`, updateWidth)
+  })
 
   if (width < WIDTH_THRESHOLD) {
     // 画像をスライドショー表示する

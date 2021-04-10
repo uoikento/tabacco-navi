@@ -1,28 +1,37 @@
 import React from 'react' 
-import TextField from '@material-ui/core/TextField'
 import FormControl from '@material-ui/core/FormControl'
 import { makeStyles } from '@material-ui/core/styles'
+import { InputBase } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
-    minWidth: "30%",
+    '@media (max-width: 650px)': {
+      display: "table",
+      height: "100%",
+      width: "70%",
+    },
+    display: "table",
+    height: "100%",
+    width: "80%"
   },
   selectEmpty: {
-    marginTop: theme.spacing(2),
+    // marginTop: theme.spacing(2),
+    display: "table-cell",
+    verticalAlign: "middle",
+    paddingLeft: "1em",
   },
 }))
 
 const KeywordForm = (props) => {
   // console.log(props.searchKeyword)
   const classes = useStyles()
-  // form中身の変更内容を取得
   const handleSearchKeywordChange = (e) => {
     props.setSearchKeyword(e.target.value)
   }
   return (
     <FormControl className={classes.formControl}>
-      <TextField
+    <InputBase
+        inputProps={{ 'aria-label': 'search google maps' }}
         className={classes.selectEmpty}
         value={props.searchKeyword}
         onChange={handleSearchKeywordChange}

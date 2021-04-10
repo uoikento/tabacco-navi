@@ -7,8 +7,12 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
+    '@media (max-width: 650px)': {
+      marginBottom: "2em",
+      minWidth: "40%",
+    },
     margin: theme.spacing(1),
-    minWidth: "30%",
+    minWidth: "20%",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -27,7 +31,6 @@ const SelectGenre = (props) => {
     <FormControl className={classes.formControl}>
       <InputLabel id="demo-simple-select-label">Genre</InputLabel>
       <Select
-        // className={classes.form}
         value={props.searchGenre}
         onChange={handleSelectChange}
       >
