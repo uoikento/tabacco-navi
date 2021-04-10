@@ -7,6 +7,10 @@ import { makeStyles } from '@material-ui/core'
 
 const useStyle = makeStyles(() => ({
   root: {
+    '@media (max-width:560px)': {
+      display: "revert",
+      justifyContent: 'unset',
+    },
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',

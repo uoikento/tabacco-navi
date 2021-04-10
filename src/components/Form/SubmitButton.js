@@ -1,12 +1,9 @@
 import React from 'react'
-import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@material-ui/icons/Search'
 const useStyles = makeStyles(() => ({
   button: {
-    // backgroundColor: '#adc178',
-    color: "#6c584c",
-    marginTop: '8px',
   },
   icon: {
     '@media (min-width:650px)': {

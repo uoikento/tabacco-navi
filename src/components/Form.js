@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Yani from './Accessories/image/tanyani.jpeg'
+import Yani from './Accessories/image/tantei.png'
 import KeywordForm from './Form/KeywordForm'
 import Location from './Form/Location'
 import SubmitButton from './Form/SubmitButton'
@@ -28,26 +28,27 @@ const useStyles = makeStyles(() => ({
   },
   img: {
     '@media (max-width:560px)': {
-      width: "60%",
-      marginLeft: "25%",
+      width: "80vw",
+      marginLeft: "5%",
+      marginTop: "4em",
     },
     objectFit: "cover",
-    width: "30%",
+    width: "50%",
     textAlign: "center",
-    marginLeft: "35%",
+    marginLeft: "25%",
+    marginTop: "8em",
   },
   Form: {
     '@media (max-width:560px)': {
       width: "100%",
       display: "revert",
-      textAlign: "center",
-      margin: "0 auto",
-      minHeight: "10%",
+      // margin: "0 auto",
+      height: "40px",
     },
     display: "flex",
     textAlign: "center",
     margin: "0 auto",
-    maxHeight: "10%",
+    height: "40px",
     width: "70%",
   },
   paper: {
@@ -55,7 +56,6 @@ const useStyles = makeStyles(() => ({
       width: "100%",
       borderRadius: 4,
       display: "flex",
-      height: "50px",
     },
     // margin: "8px",
     borderRadius: 4,
@@ -64,7 +64,7 @@ const useStyles = makeStyles(() => ({
   },
   selectAreaButton: {
     backgroundColor: "#fff",
-    color: "#5c4d7d",
+    color: "#F0A94C",
     textTransform: "none",
     padding: "unset",
   },
@@ -75,7 +75,7 @@ const useStyles = makeStyles(() => ({
     },
     minWidth: "1%",
     marginLeft: "auto",
-    marginTop: '8px',
+    // marginTop: '8px',
   },
   deleteButton: {
     color: "#6c584c",
@@ -127,7 +127,7 @@ const Form = (props) => {
         </div>
       </div>
       {/* <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchGenre={searchGenre} /> */}
-      <Box>
+      <Box >
         <img src={Yani} className={classes.img}/>
       </Box>
       <form onSubmit={postWord} className={classes.Form}>

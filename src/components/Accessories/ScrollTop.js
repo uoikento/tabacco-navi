@@ -8,7 +8,7 @@ const ScrollTop = (props) => {
     margin: 0,
     top: 'auto',
     right: 20,
-    bottom: 80,
+    bottom: 30,
     left: 'auto',
     position: 'fixed',
     backgroundColor: '#ddd'

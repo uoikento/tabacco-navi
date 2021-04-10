@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   subTitle: {
     display: "flex",
+    marginLeft: "2em",
   },
   number: {
     color: "#ffb703",

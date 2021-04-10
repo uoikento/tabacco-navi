@@ -3,9 +3,9 @@ import FormControl from '@material-ui/core/FormControl'
 import { makeStyles } from '@material-ui/core/styles'
 import { InputBase } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   formControl: {
-    '@media (max-width: 650px)': {
+    '@media (max-width: 560px)': {
       display: "table",
       height: "100%",
       width: "70%",

@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Shop from './services/shops'
 import Genre from './services/genres'
-// import Header from './components/Atoms/Header'
 import Footer from './components/Accessories/Footer'
 import Notification from './components/Accessories/Notification'
 import ScrollTop from './components/Accessories/ScrollTop'
 import LoadingSkelton from './components/Accessories/LoadingSkelton'
 import Form from './components/Form'
 import ToggleShow from './components/ToggleShow'
-// import TopImage from './components/TopImage'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -18,8 +16,6 @@ import './App.css'
 
 const useStyles = makeStyles(() => ({
   root: {
-    // fontFamily: font,
-    // backgroundColor: "#fefae0",
     minHeight: "100vh",
   },
   bodyContainer: {
@@ -28,12 +24,19 @@ const useStyles = makeStyles(() => ({
     },
   bodyContent: {
     textAlign: "center",
-    // fontSize: "3rem",
   },
   shopBox: {
     paddingTop: "8px",
-    margin: "0 2em 6em",
-    // backgroundColor: "#fefae0",
+    margin: "0 2em 4em",
+  },
+  about: {
+    '@media (max-width:560px)': {
+      marginBottom: "0em",
+      marginTop: "2em",
+    },
+    marginTop: "8em",
+    marginBottom: "12em",
+    textAlign: "center",
   },
   skelton: {
     margin: "0 auto",
@@ -52,7 +55,6 @@ const App = () => {
   const refTop = useRef()
   const classes = useStyles()
   const theme = createMuiTheme()
-
   const font = "'Corben', sans-serif"
   const themeFontFamily = createMuiTheme({
     typography: {
@@ -111,7 +113,9 @@ const App = () => {
         )
         setTimeout(() => {
           setErrorMessage(null)
-        },5000)
+        }, 5000)
+        setShops([])
+        setShopState('get')
       })
   }
   
@@ -127,17 +131,25 @@ const App = () => {
         </Container>
         <div className={classes.shopBox}>
           {shopState !== 'default'
-            && (shopState == 'loading')
+            ? (shopState == 'loading')
               ?  <LoadingSkelton/>
               : (shopState == 'get'
-                && (shops !== null
+                  && (shops !== null
                   ? (shops.length !== 0
                       && <ToggleShow shops={shops} />
                     )
                   : <Typography variant="h6" className={classes.bodyContent}>Sorry! don't find shop...</Typography>
                 )
-              )
-          }
+                )
+              : <div className={classes.about}>
+                <Typography variant="h6">
+                  カッコいいお店のみを探すことができます<br />
+                  地名or現在地を選択して場所から<br/>
+                  気分に合わしてお好きなジャンルから<br />
+                  簡単にキーワードから
+                  </Typography>
+                </div>
+            }
         </div>
         <Footer />
         </ThemeProvider>

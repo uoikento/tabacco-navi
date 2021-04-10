@@ -14,18 +14,24 @@ import { CoffeeLoading } from 'react-loadingg'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: "40vh",
+    '@media (max-width: 560px)': {
+      maxWidth: "90vw"
+    },
+    maxWidth: "30vw",
     height: 224,
   },
   form: {
+    '@media (max-width: 560px)': {
+      margin: theme.spacing(3),
+    },
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    margin: theme.spacing(3),
+    margin: theme.spacing(4),
     minWidth: 150,
   },
   title: {
-    color: "#5c4d7d",
+    color: "#F0A94C",
     marginBottom: "2em",
     textAlign:"center"
   },
@@ -35,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   exampleTitle: {
     display: "flex",
-    justifyContent: "center",
+    marginLeft: "2em",
   },
   select: {
     width: "70%",
