@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Yani from './Atoms/image/tanyani.jpeg'
+import Yani from './Accessories/image/tanyani.jpeg'
 import KeywordForm from './Form/KeywordForm'
 import Location from './Form/Location'
 import SubmitButton from './Form/SubmitButton'
@@ -10,8 +10,8 @@ import Button from '@material-ui/core/Button'
 import Drawer from '@material-ui/core/Drawer'
 import GpsNotFixedIcon from '@material-ui/icons/GpsNotFixed'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Paper } from '@material-ui/core'
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
+import { Typography, Paper, Box } from '@material-ui/core'
 
 const useStyles = makeStyles(() => ({
   searchForm: {
@@ -26,24 +26,41 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     marginLeft: "auto",
   },
-  title: {
+  img: {
+    '@media (max-width:560px)': {
+      width: "60%",
+      marginLeft: "25%",
+    },
     objectFit: "cover",
     width: "30%",
     textAlign: "center",
     marginLeft: "35%",
   },
   Form: {
+    '@media (max-width:560px)': {
+      width: "100%",
+      display: "revert",
+      textAlign: "center",
+      margin: "0 auto",
+      minHeight: "10%",
+    },
     display: "flex",
     textAlign: "center",
-    paddingLeft: "15%",
-    // marginRight: "auto",
+    margin: "0 auto",
     maxHeight: "10%",
+    width: "70%",
   },
   paper: {
-    // backgroundColor: "#ddd",
+    '@media (max-width: 560px)': {
+      width: "100%",
+      borderRadius: 4,
+      display: "flex",
+      height: "50px",
+    },
+    // margin: "8px",
     borderRadius: 4,
     display: "flex",
-    minWidth: "80%",
+    width: "70%",
   },
   selectAreaButton: {
     backgroundColor: "#fff",
@@ -52,12 +69,15 @@ const useStyles = makeStyles(() => ({
     padding: "unset",
   },
   buttonStyle: {
-    minWidth: "5%",
+    '@media (max-width: 560px)': {
+      width: "10%",
+      marginLeft: "0",
+    },
+    minWidth: "1%",
     marginLeft: "auto",
     marginTop: '8px',
   },
   deleteButton: {
-    // backgroundColor: '#E0794C',
     color: "#6c584c",
     marginTop: '8px',
     minWidth: "5%",
@@ -90,7 +110,6 @@ const Form = (props) => {
   const deleteForm = () => {
     setSearchKeyword('')
     setSearchLat('')
-    setSearchLng('')
     setSearchGenre([])
     setSelectMiddle([])
   }
@@ -108,21 +127,22 @@ const Form = (props) => {
         </div>
       </div>
       {/* <SearchState searchKeyword={searchKeyword} searchLat={searchLat} searchGenre={searchGenre} /> */}
-      {/* <div className={classes.title} > */}
-        <img src={Yani} className={classes.title}/>
-      {/* </div> */}
+      <Box>
+        <img src={Yani} className={classes.img}/>
+      </Box>
       <form onSubmit={postWord} className={classes.Form}>
+        <SelectGenre genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre} />
+        
         <Paper className={classes.paper}>
-          <SelectGenre genres={props.genres} setSearchGenre={setSearchGenre} searchGenre={searchGenre}/>
           <KeywordForm setSearchKeyword={setSearchKeyword} searchKeyword={searchKeyword} />
           <div className={classes.buttonStyle}>
             <SubmitButton />
           </div>
           </Paper>
-            <Button onClick={deleteForm} className={classes.deleteButton}>
-              <DeleteForeverIcon fontSize="large" color="error"/>
-            </Button>
       </form>
+      {/* <Button onClick={deleteForm} className={classes.deleteButton}>
+        <DeleteForeverIcon fontSize="large" color="error"/>
+      </Button> */}
         <Drawer open={drawState} onClose={() => setDrawState(false)}>
           <GetArea selectMiddle={selectMiddle} setSelectMiddle={setSelectMiddle} setDrawState={setDrawState}/>
         </Drawer>

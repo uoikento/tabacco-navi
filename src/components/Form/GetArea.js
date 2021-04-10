@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react"
-import {prefecture} from '../Atoms/prefecture'
+import {prefecture} from '../Accessories/prefecture'
 import Area from '../../services/areas'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
@@ -49,7 +49,6 @@ const GetArea = (props) => {
   console.count("area")
   const classes = useStyles()
   const [middleAreas, setMiddleAreas] = useState([])
-  // const [prefectureCode, setPrefectureCode] = useState("")
   const [loadingBool, setLoadingBool] = useState(false)
   const inputPrefecture = useRef(null)
   const selectMiddle = props.selectMiddle
@@ -68,8 +67,6 @@ const GetArea = (props) => {
   }
   
   const handlePrefectureChange = (e) => {
-    // setLoadingBool(true)
-    // setPrefectureCode()
     postArea(e.target.value)
   }
 
@@ -97,8 +94,6 @@ const GetArea = (props) => {
     props.setDrawState(false)
   }
 
-// console.table(selectMiddle)
-// console.log(middleAreas)
   return (
     <div className={classes.root}>
       <IconButton onClick={handleClose}>
