@@ -12,7 +12,6 @@ const useStyles = makeStyles(() => ({
       minWidth: "40%",
       display: "none",
     },
-    // margin: theme.spacing(1),
     minWidth: "20%",
     marginRight: "2em",
   },
