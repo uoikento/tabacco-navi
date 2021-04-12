@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
     '@media (max-width: 560px)': {
       display: "table",
       height: "100%",
-      width: "70%",
+      width: "75%",
     },
     display: "table",
     height: "100%",
@@ -19,6 +19,7 @@ const useStyles = makeStyles(() => ({
     display: "table-cell",
     verticalAlign: "middle",
     paddingLeft: "1em",
+    paddingTop: "0.5em",
   },
 }))
 
