@@ -53,7 +53,7 @@ const useStyles = makeStyles(() => ({
   },
   paper: {
     '@media (max-width: 560px)': {
-      width: "100%",
+      width: "95%",
       borderRadius: 4,
       display: "flex",
     },
