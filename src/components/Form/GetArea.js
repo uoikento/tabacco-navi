@@ -53,17 +53,22 @@ const useStyles = makeStyles((theme) => ({
 
 const GetArea = (props) => {
   console.count("area")
+
   const classes = useStyles()
   const [middleAreas, setMiddleAreas] = useState([])
   const [loadingBool, setLoadingBool] = useState(false)
-  const inputPrefecture = useRef(null)
+  // const inputPrefecture = useRef(null)
+  const [prefectureCode, setPrefectureCode] = useState("")
   const selectMiddle = props.selectMiddle
+  console.table(middleAreas)
 
-  const postArea = (prefectureCode, keyword) => {
+  const postArea = (prefecture, keyword) => {
     setLoadingBool(true)
+    // console.log(prefecture)
+    // console.log(keyword)
     Area
       .getAreas({
-        large_area: prefectureCode,
+        large_area: prefecture,
         keyword: `${keyword}`
       })
       .then(middleAreas => {
@@ -73,12 +78,16 @@ const GetArea = (props) => {
   }
   
   const handlePrefectureChange = (e) => {
+    // setPrefectureCode('')
+    // console.log(e.target.value)
+    setPrefectureCode(e.target.value)
     postArea(e.target.value)
   }
 
   const handleMiddleChange = (e) => {
     const keyword = e.target.value
-    postArea(inputPrefecture.current.value, keyword)
+    // console.log(inputPrefecture.current.value)
+    postArea(prefectureCode, keyword)
   }
 
   const handleClick = (m_code) => {
@@ -122,8 +131,8 @@ const GetArea = (props) => {
       <InputLabel>Prefecture</InputLabel>
       <Select
           className={classes.select}
-          ref={inputPrefecture}
-          // value={inputPrefecture}
+          // ref = { inputPrefecture }
+          value={prefectureCode}
           onChange={handlePrefectureChange}
       >
         <MenuItem key='delete' value={''}>-</MenuItem>
