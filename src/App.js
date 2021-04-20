@@ -17,6 +17,10 @@ import './App.css'
 const useStyles = makeStyles(() => ({
   root: {
     minHeight: "100vh",
+    // backgroundColor: "#cecece",
+    // opacity: "0.6",
+    // backgroundSize: "12px 12px",
+    // backgroundImage: repeating-linear-gradient("0deg", "#bababa", "#bababa 0.6000000000000001px", "#cecece 0.6000000000000001px", "#cecece")
   },
   bodyContainer: {
     color: "#6c584c",
@@ -142,11 +146,9 @@ const App = () => {
                 )
                 )
               : <div className={classes.about}>
-                <Typography variant="h6">
-                  カッコいいお店のみを探すことができます<br />
-                  地名or現在地を選択して場所から<br/>
-                  気分に合わしてお好きなジャンルから<br />
-                  簡単にキーワードから
+                  <Typography variant="h6">
+                    喫煙できてwifiのあるカフェの快適さや、<br />
+                    喫煙しながら飲むお酒の美味しさを知っている方が、ご利用していただくアプリです。<br />
                   </Typography>
                 </div>
             }
