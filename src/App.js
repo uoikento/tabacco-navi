@@ -100,7 +100,7 @@ const App = () => {
       .getShops(searchObject)
       .then(searchShops => {
         // console.log(searchShops)
-        const smoke = searchShops.filter(shop => shop.non_smoking !== "全面禁煙")
+        const smoke = searchShops.filter(shop => shop.non_smoking !== "全面禁煙"&&shop.non_smoking !=="未確認")
         if (smoke.length === 0) {
           setShops(null)
           setShopState('get')
