@@ -45,9 +45,8 @@ const Location = (props) => {
   const [state, setState] = useState(false)
 
   const handleSearchLocation = () => {
-    setLoadingState('loading')
-    navigator.geolocation.getCurrentPosition(position => {
-        console.log(position.coords.latitude)
+    const successFunc = (position) => {
+      console.log(position.coords.latitude)
         console.log(position.coords.longitude)
         const lat = position.coords.latitude
         const lng = position.coords.longitude
@@ -55,7 +54,34 @@ const Location = (props) => {
         props.setSearchLng(lng)
       setLoadingState('get')
       setState(true)
-    })
+    }
+    const errorFunc = (error) => {
+      console.log("error")
+      switch(error.code) {
+        case 1: 
+          alert("位置情報の利用が許可されていません");
+          break;
+        case 2: 
+          alert("現在位置が取得できませんでした");
+          break;
+        case 3: 
+          alert("タイムアウトになりました");
+          break;
+        default:
+          alert("その他のエラー(エラーコード:"+error.code+")");
+          break;
+      }
+      setLoadingState('get')
+      setState(true)
+    }
+    const option = {
+      "enableHighAccuracy": false ,
+      "timeout": 6000 ,
+      "maximumAge": 5000 ,
+    }
+    
+    setLoadingState('loading')
+    navigator.geolocation.getCurrentPosition(successFunc, errorFunc, option)
   }
   const handleDeleteLocation = () => {
     props.setSearchLat('')
@@ -93,7 +119,7 @@ const Location = (props) => {
         : <Button className={classes.getButton} onClick={handleSearchLocation}>
             <LocationOnIcon />
             <Typography variant="h5">Get Locate</Typography>
-            {state && <Snackbar open={state} onClose={handleClose} message="位置情報を削除しました" key={loadingState} />}
+            {state && <Snackbar open={state} onClose={handleClose} message="位置情報オフ" key={loadingState} />}
           </Button>
           }
     </div>
