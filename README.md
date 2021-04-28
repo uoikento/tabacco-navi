@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+##はじめに
+###ちょっと酷くない？
+喫煙するなんて非合理的だと認知はしているが、理解しようと努めていたある日、
+受動喫煙対策法という素晴らしい法律が可決されたことで、喫煙可能スペースを探すのが大変面倒になってしまった。
+友人とご飯に行くとき、文句を言いながら探し回っていた訳です。
+そんな未だに理解しないニコチン中毒者が、文句を垂れないために作ったwebアプリです。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##アプリ概要
 
-## Available Scripts
+https://yaninavi.com/
 
-In the project directory, you can run:
+__喫煙できてwifiのあるカフェの快適さや、
+喫煙しながら飲むお酒の美味しさを知っている方へ__
+_ログイン不要でお使いいただけます。_
+ジャンル、現在地、地名、キーワードなどからお店を探すことができます。
+詳細ボタンを押していただくと、googleMapとhotpepperへのリンクをご用意しております。
 
-### `npm start`
+＊[ホットペッパーapi](<https://webservice.recruit.co.jp/doc/hotpepper/reference.html>)を使用しております。
+###プレビュー
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![yaniGif (1).gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/510294/86b282d9-e7c5-274c-07f1-9352176fb451.gif)
+###前提
+- ポートフォリオとして提示する
+- 実際に私自身や友人の喫煙者達が使う
 
-### `npm test`
+###使用技術
+言語：javascript
+フロント：react
+バックエンド：node.js express
+見た目：[material ui] (https://material-ui.com/)
+  &emsp;&emsp;&emsp;&emsp;&emsp;[react-loadingg](https://github.com/Summer-andy/react-loading)
+インフラ：フロントにはfirebase Hostingを、バックエンドにはherokuを使用
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+####本番環境
+元々は、フロントのbuildファイルをバックエンド側へコピーし、バックエンドをherokuへデプロイしていたのですが、遅すぎる。。。
+どうやらherokuさんは、ある程度の時間起動しないとアイドリング状態になるようで、このアイドリング状態からの起動が遅いようです。
 
-### `npm run build`
+しかし、expressをデプロイするとなると従量課金制のものが多く（AWSに５千円取られたことあるコワイ）、、、
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+そこで、バックエンド側はherokuへ、フロント側はfirebase hostingへデプロイしてみたところ、初回ページ読み込み速度は改善されました。
+ただ、こういった方法で実装されている記事を見かけなかったので、正しい使い方では無いのかなぁ、と感じています。
+なので今後の課題として、herokuの代わりにcloud functionsを使用する、もしくはnext.jsで作り直すか、を考え中。。。
+![スクリーンショット 2021-04-20 16.46.35.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/510294/2901dd61-7517-c9e1-44d0-501bd079b8c4.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##最後に
+まだまだ足りない知識を使ってこの記事を書いているので、ご指摘などして頂けたらとても嬉しく思います。
+また、アプリの不具合やフィードバックなども、頂けたらとても嬉しく思います。
