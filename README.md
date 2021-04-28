@@ -17,7 +17,8 @@ _ログイン不要でお使いいただけます。_
 
 ＊[ホットペッパーapi](<https://webservice.recruit.co.jp/doc/hotpepper/reference.html>)を使用しております。
 ### プレビュー
-![yaniGif (1).gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/510294/86b282d9-e7c5-274c-07f1-9352176fb451.gif)
+![yaniGif (1)](https://user-images.githubusercontent.com/56298353/116371943-ea7a6900-a846-11eb-83f8-aea1f002852a.gif)
+
 ### 前提
 - ポートフォリオとして提示する
 - 実際に私自身や友人の喫煙者達が使う
